@@ -1,7 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Router from './pages/Router.js';
 
 function App() {
-  return <div>router 를 연결해주세요.</div>;
+  return <Router />;
 }
 
 export default App;
