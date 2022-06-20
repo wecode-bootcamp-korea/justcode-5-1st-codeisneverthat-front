@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -20,8 +21,13 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	// font: inherit;
+	font-family:'Noto Sans KR', sans-serif, helvetica; 
+	font-size:14px; 
 	vertical-align: baseline;
+	color:#101010;
+	line-height: 1.2;
+	font-weight:400;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -29,7 +35,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 1.2;
 }
 ol, ul {
 	list-style: none;
@@ -46,3 +52,17 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+button, input, optgroup, select, textarea { font-family:inherit; font-size:100%; line-height:inherit; color:inherit; margin:0; padding:0; border-width:0; }
+button, select { text-transform:none; }
+button, [type='button'], [type='reset'], [type='submit'] { -webkit-appearance:button; background-color:transparent; background-image:none; }
+:-moz-focusring { outline:auto; }
+:-moz-ui-invalid { box-shadow:none; }
+a { color:inherit; text-decoration:inherit; }
+b, strong { font-weight:500; }
+input::placeholder, textarea::placeholder { opacity:1; color:#8e8e8e; }
+input:focus, textarea:focus { outline:none; }
+button, [role="button"] { cursor:pointer; }
+:disabled { cursor:default; }
+img, svg, video, canvas, audio, iframe, embed, object { display:block; }
+[hidden] { display:none; }
