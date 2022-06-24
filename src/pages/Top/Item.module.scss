@@ -1,0 +1,59 @@
+.block{
+    background-color: white;
+    height: 88px; 
+    border-bottom: solid black 1px; 
+    margin: 0px 50px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    justify-items: center;
+}
+
+.rankBlock{
+    position:relative;
+    top:25px;
+    text-align: center;
+    background-color: black;
+    width:50px;
+    height:34px;
+    color:white;
+    margin:0px 0px 10px;
+    padding: 7px 0px;
+    border-radius: 20px;  
+}
+.nameBlock{
+    position:relative;
+    left:70px;
+    bottom:38px;
+    text-align: center;
+    display: inline-block;
+    font-size:50px;
+    margin:0px;
+    padding:0px;
+    
+}
+
+.typeBlock {
+    position:relative;
+    left:860px;
+    bottom:10px;
+    font-size:50px;
+    bottom:100px;
+    margin:0px;
+    padding:0px;
+}
+
+.imageBox {
+    display: flex;
+    position: relative; 
+    left: 1130px;
+    bottom: 155px; 
+
+
+}
+.imagesBlock {
+
+    bottom: 155px;
+    width:60px;
+    height:70px;
+
+}
