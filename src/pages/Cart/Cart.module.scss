@@ -1,0 +1,140 @@
+.container {
+  border: 5px solid blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.main_container {
+  border: 1px solid black;
+  width: 500px;
+}
+
+.cart_top {
+  border: 5px solid pink;
+}
+
+.cart_order {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart_back {
+  border: 1px solid black;
+  text-decoration: underline;
+}
+
+.cart_component {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.cart_image {
+  border: 1px solid black;
+  width: 150px;
+  height: 200px;
+}
+
+.cart_content {
+  border: 1px solid black;
+  width: 350px;
+  height: 200px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart_sub_top {
+}
+
+.product_name {
+  border: 1px solid black;
+  margin-bottom: 4px;
+}
+
+.product_color {
+  border: 1px solid black;
+  margin-bottom: 4px;
+}
+
+.product_size {
+  border: 1px solid black;
+  margin-bottom: 4px;
+}
+
+.cart_sub_bottom {
+  border: 1px solid black;
+}
+
+.cart_sub_btn {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cart_quantity_btn {
+  border: 1px solid black;
+  padding: 6px 0;
+}
+
+.cart_quantity_adjust {
+  border: 1px solid black;
+}
+
+.cart_quantity {
+  text-align: center;
+  width: 20px;
+}
+
+.cart_price {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.cart_bottom {
+  border: 1px solid black;
+  border-top: 1px solid gray;
+}
+
+.cart_save_box {
+  padding: 20px 0;
+}
+
+.cart_subtotal {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+.cart_subtotal_text {
+  font-weight: 900;
+}
+
+.cart_save_text {
+  border: 1px solid black;
+  margin-top: 10px;
+  color: grey;
+  font-size: 12px;
+}
+
+.cart_checkout_btn {
+  padding: 10px 0;
+  display: block;
+  width: 100%;
+  background-color: black;
+  color: white;
+  border-radius: 2rem;
+}
+
+.cart_coupon_notice {
+  color: #999999;
+  padding: 20px 0;
+  font-size: 12px;
+}

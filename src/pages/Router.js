@@ -8,6 +8,7 @@ import Findpassword from './Findpassword/Findpassword';
 import Collections from './Collections/Collections';
 import Top from './Top/Top';
 import Product from './Product/Product';
+import Cart from './Cart/Cart';
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
         <Route path="/collections" element={<Collections />} />
         <Route path="/top" element={<Top />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );
