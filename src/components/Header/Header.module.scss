@@ -6,9 +6,7 @@
   .cont {
     position: relative;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flexSpaceBetween;
     padding: 12px 40px;
 
     .header_left {

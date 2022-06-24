@@ -2,18 +2,14 @@
 
 #footer {
   position: relative;
-  display: flex;
+  @include flexCenter;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   padding: 12px 40px;
   border-top: 1px solid #111;
 
   .cont {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flexSpaceBetween;
     width: 100%;
     padding: 4px 0;
 
@@ -46,10 +42,8 @@
     }
   }
 
-  .fotter_btm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .footer_btm {
+    @include flexCenter;
     padding: 10px 0 2px;
     li {
       padding: 0 6px;

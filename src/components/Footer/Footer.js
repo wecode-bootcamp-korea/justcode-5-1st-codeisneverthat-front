@@ -68,7 +68,7 @@ function Footer() {
         </ul>
         <p className={css.copyright}>&copy; 2022 codeisneverthat®</p>
       </div>
-      <ul className={css.fotter_btm}>
+      <ul className={css.footer_btm}>
         <li>저스트코드</li>
         <li>서울특별시 강남구 테헤란로 427, 위워크타워</li>
         <li>사업자번호 : 530-81-01310</li>
