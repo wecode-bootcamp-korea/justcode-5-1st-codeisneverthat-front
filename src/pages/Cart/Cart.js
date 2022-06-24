@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './Cart.module.scss';
+import { Link } from 'react-router-dom';
 
 function Cart() {
   return (
@@ -9,7 +10,9 @@ function Cart() {
           <div className={css.cart_top}>
             <div className={css.cart_order}>
               <span> ORDER SUMMARY </span>
-              <a className={css.cart_back}> BACK </a>
+              <Link to="/" className={css.cart_back}>
+                BACK
+              </Link>
             </div>
             <div className={css.cart_component}>
               <div className={css.cart_image}>
@@ -17,8 +20,11 @@ function Cart() {
               </div>
               <div className={css.cart_content}>
                 <div className={css.cart_sub_top}>
-                  <div className={css.product_name}>
-                    <a>TNT BROWN Tote Bag</a>
+                  <div className={css.cart_name_cancel}>
+                    <div className={css.product_name}>
+                      <Link to="/">TNT BROWN Tote Bag</Link>
+                    </div>
+                    <div className={css.cart_cancel}>x</div>
                   </div>
                   <div className={css.product_color}>Black</div>
                   <div className={css.product_size}>Size OS</div>
@@ -26,14 +32,18 @@ function Cart() {
                 <div className={css.cart_sub_bottom}>
                   <div className={css.cart_sub_btn}>
                     <div className={css.cart_quantity_btn}>
-                      <span className={css.cart_quantity_adjust}>-</span>
+                      <button className={css.cart_quantity_minus}>
+                        &nbsp; -&nbsp;&nbsp;
+                      </button>
                       <input
                         className={css.cart_quantity}
                         type="text"
                         value="1"
                         min="1"
                       />
-                      <span className={css.cart_quantity_adjust}>+</span>
+                      <button className={css.cart_quantity_plus}>
+                        &nbsp; +&nbsp;&nbsp;
+                      </button>
                     </div>
                     <div className={css.cart_price}>
                       <span>￦99,000</span>
@@ -59,9 +69,7 @@ function Cart() {
               </div>
             </div>
 
-            <button className={css.cart_checkout_btn} type="submit">
-              GO TO CHECKOUT
-            </button>
+            <button className={css.cart_checkout_btn}>GO TO CHECKOUT</button>
 
             <div className={css.cart_coupon_notice}>
               배송비 및 쿠폰 적용은 결제 단계에서 적용됩니다.
