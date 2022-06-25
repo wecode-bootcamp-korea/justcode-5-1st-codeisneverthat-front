@@ -4,7 +4,17 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  position: relative;
   height: calc(100vh - 126px);
+  animation: top 0.6s linear;
+  @keyframes top {
+    0% {
+      top: 40px;
+    }
+    100% {
+      top: 0;
+    }
+  }
 
   .cont {
     width: 600px;
@@ -25,7 +35,7 @@
         margin-top: 0;
       }
     }
-    .btn_account {
+    .btn_black {
       width: 100%;
       background: #101010;
       color: #fff;
@@ -34,10 +44,14 @@
       margin-top: 20px;
       font-size: 16px;
     }
-    .btn_goLogin {
+    .btn_goLink {
       display: block;
-      margin-top: 12px;
+      margin-top: 16px;
+      font-size: 16px;
       text-decoration: underline;
+    }
+    .btn_goLink + .btn_goLink {
+      margin-top: 12px;
     }
   }
 }
