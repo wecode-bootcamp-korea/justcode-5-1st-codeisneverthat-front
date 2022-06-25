@@ -1,2 +1,43 @@
-.container {
+@import '../../styles/variables.scss';
+
+#signup {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 126px);
+
+  .cont {
+    width: 600px;
+    padding-top: 60px;
+    .cnt_div {
+      width: 100%;
+      margin-top: 20px;
+      label {
+        font-size: 16px;
+      }
+      input {
+        width: 100%;
+        border: 1px solid #101010;
+        padding: 12px 8px;
+        margin-top: 8px;
+      }
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    .btn_account {
+      width: 100%;
+      background: #101010;
+      color: #fff;
+      border-radius: 24px;
+      padding: 10px 0;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .btn_goLogin {
+      display: block;
+      margin-top: 12px;
+      text-decoration: underline;
+    }
+  }
 }
