@@ -29,8 +29,8 @@ function Signup() {
             />
           </div>
 
-          <button className={css.btn_account}>CREATE ACCOUNT</button>
-          <Link to="/login" className={css.btn_goLogin}>
+          <button className={css.btn_black}>CREATE ACCOUNT</button>
+          <Link to="/login" className={css.btn_goLink}>
             로그인으로 돌아가기
           </Link>
         </form>
