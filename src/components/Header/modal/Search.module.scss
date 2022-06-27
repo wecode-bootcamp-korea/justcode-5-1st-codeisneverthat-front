@@ -1,0 +1,20 @@
+@import '../../../styles/variables.scss';
+
+#search_wrap {
+  @include flexCenter;
+  width: calc(100% - 80px);
+  height: 56px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #101010;
+  .search_input {
+    flex: 1;
+    padding: 18px 20px;
+    background: #fff;
+  }
+  .btn_close {
+    width: 60px;
+    height: 100%;
+    border-left: 1px solid #101010;
+  }
+}
