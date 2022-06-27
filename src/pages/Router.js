@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
+
 import Home from './Home/Home';
 import Login from './Login/Login';
 import Signup from './Signup/Signup';
