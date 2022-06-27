@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Footer from '../components/Footer'
-import Header from '../components/Header'
+import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
 
 import Home from './Home/Home';
 import Login from './Login/Login';
@@ -14,8 +14,8 @@ import Product from './Product/Product';
 function Router() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
-        <Header />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -23,8 +23,8 @@ function Router() {
         <Route path="/collections" element={<Collections />} />
         <Route path="/top" element={<Top />} />
         <Route path="/product" element={<Product />} />
-        <Footer />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
