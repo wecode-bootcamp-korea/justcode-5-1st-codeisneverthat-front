@@ -13,8 +13,8 @@ function Item(props) {
       <div className={css.typeBlock}>{props.type}</div>
 
       <div className={css.imageBox}>
-        <img className={css.imagesBlock} src={props.image1}></img>
-        <img className={css.imagesBlock} src={props.image2}></img>
+        <img className={css.imagesBlock1} src={props.image1}></img>
+        <img className={css.imagesBlock2} src={props.image2}></img>
         {/* <img className={css.imagesBlock} src={props.image3}></img> */}
       </div>
     </div>
