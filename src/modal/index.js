@@ -5,9 +5,10 @@ const modal = document.getElementById('modal');
 
 function modalLayout(props) {
   return ReactDOM.createPortal(
-    <div className={css.dim} onClick={props.openModal}>
+    <>
+      <div className={css.dim} onClick={props.openModal}></div>
       {props.children}
-    </div>,
+    </>,
     modal
   );
 }
