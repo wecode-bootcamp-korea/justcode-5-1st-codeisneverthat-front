@@ -9,6 +9,7 @@
     width: 20%;
     height: 10%;
     padding: 10px 20px; 
+    cursor:pointer;
 }
 
 .image{
@@ -19,13 +20,22 @@
 .subimages {
     display: flex; 
     justify-content: center; 
+    flex-direction: row;
 }
-.subimage{
+.subimage1{
     padding: 3px;
     width:15%;
     height:7%;
 
 }
+.subimage2{
+    padding: 3px;
+    width:15%;
+    height:7%;
+
+}
+
+
 
 .name {
     text-align: center;
