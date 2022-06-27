@@ -1,0 +1,92 @@
+{
+  "data": [
+    {
+      "productId": 1,
+      "productName": "DSN-Logo Tee",
+      "price": 45000,
+      "madeIn": "Bangladesh",
+      "description": "Flag label on sleeve hem",
+      "category": "Tees",
+      "colorImage": [
+        {
+          "id": 1,
+          "color": {
+            "id": 1,
+            "color": "Black"
+          },
+          "images": [
+            {
+              "id": 1,
+              "url": "https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black1_1080x.jpg?v=1646387533"
+            },
+            {
+              "id": 2,
+              "url": "https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black5_1080x.jpg?v=1646387533"
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "color": {
+            "id": 2,
+            "color": "White"
+          },
+          "images": [
+            {
+              "id": 61,
+              "url": "https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-White1_1080x.jpg?v=1646387533"
+            },
+            {
+              "id": 62,
+              "url": "https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-White5_1080x.jpg?v=1646387533"
+            }
+          ]
+        }
+      ],
+      "stockBySize": [
+        {
+          "id": 1,
+          "color": {
+            "id": 1,
+            "color": "Black"
+          },
+          "sizeStock": [
+            {
+              "size": "S",
+              "stock": 10
+            },
+            {
+              "size": "M",
+              "stock": 10
+            },
+            {
+              "size": "L",
+              "stock": 0
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "color": {
+            "id": 2,
+            "color": "White"
+          },
+          "sizeStock": [
+            {
+              "size": "S",
+              "stock": 10
+            },
+            {
+              "size": "M",
+              "stock": 10
+            },
+            {
+              "size": "L",
+              "stock": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

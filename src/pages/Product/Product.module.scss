@@ -1,2 +1,129 @@
 .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.productThumbnailContainer {
+  width: 24rem;
+  margin: 0 0 0 5rem;
+}
+
+.productThumbnail {
+  width: 6rem;
+  height: 8rem;
+}
+
+.productImageContainer {
+  display: flex;
+  width: 46rem;
+  height: 62rem;
+}
+
+.prevIcon {
+  display: flex;
+  align-items: center;
+  height: 62rem;
+  font-size: 5rem;
+}
+
+.productImage {
+  display: flex;
+  align-items: center;
+}
+
+.nextIcon {
+  display: flex;
+  align-items: center;
+  height: 62rem;
+  font-size: 5rem;
+}
+
+.productInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 62rem;
+  margin: 0 5rem 0 0;
+}
+
+.productHead {
+  margin: 0 0 0.5rem 0;
+}
+
+.productName {
+  font-size: 2rem;
+}
+
+.productColor {
+  margin: 0 0 0 0.4rem;
+  font-size: 2rem;
+}
+
+.productPrice {
+  font-size: 2rem;
+}
+
+.productColors {
+  display: flex;
+  margin: 2rem 0;
+}
+
+.productColorImage {
+  width: 3.6rem;
+  height: 4.8rem;
+  margin: 0 0.2rem 0 0;
+}
+
+.productSizes {
+  display: flex;
+  margin: 2rem 0;
+}
+
+.sizeBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border: 0.1px solid #cccccc;
+  font-size: 1.6rem;
+  margin: 0 0.5rem 0 0;
+}
+
+.addCartButtonContainer {
+  margin: 1rem 0;
+}
+
+.addCartButton {
+  font-size: 1.6rem;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 0.5rem 2rem;
+}
+
+.productDescriptions {
+  margin: 2rem 0;
+}
+
+.productDescription {
+  font-size: 1.6rem;
+  margin: 0 0 0.4rem 0;
+}
+
+.modal {
+  margin: 0 0 1rem 0;
+}
+
+.modalButton {
+  font-size: 1.6rem;
+}
+
+.modalDescription {
+  margin: 0.5rem 0 0 0;
+  font-size: 1.2rem;
+  color: #999999;
 }
