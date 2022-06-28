@@ -1,8 +1,22 @@
 import React from 'react';
 import css from './Cart.module.scss';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Items from '../../components/CartItem/Items';
 
 function Cart() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:10010/cart', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setItems(...items, data);
+      });
+  }, []);
+
   return (
     <div className={css.container}>
       <div className={css.main}>
@@ -14,50 +28,13 @@ function Cart() {
                 BACK
               </Link>
             </div>
-            <div className={css.cart_component}>
-              <div className={css.cart_image}>
-                <img src=""></img>
-              </div>
-              <div className={css.cart_content}>
-                <div className={css.cart_sub_top}>
-                  <div className={css.cart_name_cancel}>
-                    <div className={css.product_name}>
-                      <Link to="/">TNT BROWN Tote Bag</Link>
-                    </div>
-                    <div className={css.cart_cancel}>x</div>
-                  </div>
-                  <div className={css.product_color}>Black</div>
-                  <div className={css.product_size}>Size OS</div>
-                </div>
-                <div className={css.cart_sub_bottom}>
-                  <div className={css.cart_sub_btn}>
-                    <div className={css.cart_quantity_btn}>
-                      <button className={css.cart_quantity_minus}>
-                        &nbsp; -&nbsp;&nbsp;
-                      </button>
-                      <input
-                        className={css.cart_quantity}
-                        type="text"
-                        value="1"
-                        min="1"
-                      />
-                      <button className={css.cart_quantity_plus}>
-                        &nbsp; +&nbsp;&nbsp;
-                      </button>
-                    </div>
-                    <div className={css.cart_price}>
-                      <span>￦99,000</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Items items={items} />
           </div>
           <div className={css.cart_bottom}>
             <div className={css.cart_save_box}>
               <div className={css.cart_subtotal}>
                 <span className={css.cart_subtotal_text}>SUBTOTAL</span>
-                <span>￦306,000</span>
+                <span>￦기능구현해야함</span>
               </div>
               <div className={css.cart_save_text}>
                 적립금은 로그인 했을 시에만 이용 가능합니다. <br />
@@ -68,9 +45,7 @@ function Cart() {
                 구매 적립금 10%는 결제 완료 후 7일 뒤에 발행됩니다.
               </div>
             </div>
-
             <button className={css.cart_checkout_btn}>GO TO CHECKOUT</button>
-
             <div className={css.cart_coupon_notice}>
               배송비 및 쿠폰 적용은 결제 단계에서 적용됩니다.
             </div>
