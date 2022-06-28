@@ -5,21 +5,25 @@ import css from './Product.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-library.add(faAngleLeft, faAngleRight);
+import {
+  faAngleLeft,
+  faAngleRight,
+  faArrowUpRightFromSquare,
+} from '@fortawesome/free-solid-svg-icons';
+library.add(faAngleLeft, faAngleRight, faArrowUpRightFromSquare);
 
 function Product() {
-  const [productDetails, setProductDetails] = useState([]);
+  // const [productDetails, setProductDetails] = useState([]);
 
-  useEffect(() => {
-    fetch('http://localhost:3000/data/productDetailData.json', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        setProductDetails(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/data/productDetailData.json', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setProductDetails(data);
+  //     });
+  // }, []);
 
   // key={productDetails.datas.data.productId}
   // id={productDetails.data.productName}
@@ -38,12 +42,14 @@ function Product() {
       <div className={css.productThumbnailContainer}>
         <div className={css.productThumbnail}>
           <img
+            className={css.productThumbnailImage}
             alt="sub"
             src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black1_110x110@2x.jpg?v=1646387533"
           />
         </div>
         <div className={css.productThumbnail}>
           <img
+            className={css.productThumbnailImage}
             alt="sub"
             src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black5_110x110@2x.jpg?v=1646387533"
           />
@@ -53,7 +59,7 @@ function Product() {
         <div className={css.prevIcon}>
           <FontAwesomeIcon
             className={css.angleLeft}
-            /*style={}*/ icon="fa-solid fa-angle-left"
+            icon="fa-solid fa-angle-left"
           />
         </div>
         <div className={css.productImage}>
@@ -70,27 +76,36 @@ function Product() {
         </div>
       </div>
       <div className={css.productInfoContainer}>
-        <div className={css.productHead}>
+        <h1 className={css.productHead}>
           <span className={css.productName}>DSN-Logo Tee</span>
           <span className={css.productColor}>Black</span>
-        </div>
+        </h1>
         <div>
           <span className={css.productPrice}>₩45,000</span>
         </div>
         <div className={css.productColors}>
           <div className={css.productColorImage}>
+            <div className={css.colorImageDetailBox}>
+              <div className={css.colorImageDetail}>White</div>
+            </div>
             <img
               alt="White"
               src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-White1_1080x.jpg?v=1646387533"
             />
           </div>
           <div className={css.productColorImage}>
+            <div className={css.colorImageDetailBox}>
+              <div className={css.colorImageDetail}>Black</div>
+            </div>
             <img
               alt="Black"
               src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black1_1080x.jpg?v=1646387533"
             />
           </div>
           <div className={css.productColorImage}>
+            <div className={css.colorImageDetailBox}>
+              <div className={css.colorImageDetail}>Dark Mocha</div>
+            </div>
             <img
               alt="Dark Mocha"
               src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Dark-Mocha1_1080x.jpg?v=1646387533"
@@ -113,13 +128,25 @@ function Product() {
         </div>
         <div>
           <div className={css.modal}>
-            <div className={css.modalButton}>SIZE & FIT</div>
+            <span className={css.modalButton}>SIZE & FIT</span>
+            <span>
+              <FontAwesomeIcon
+                className={css.modalIcon}
+                icon="fa-solid fa-arrow-up-right-from-square"
+              />
+            </span>
             <div className={css.modalDescription}>
               Model is 183cm(6') and wears size L.
             </div>
           </div>
           <div className={css.modal}>
-            <div className={css.modalButton}>SHIPPING</div>
+            <span className={css.modalButton}>SHIPPING</span>
+            <span>
+              <FontAwesomeIcon
+                className={css.modalIcon}
+                icon="fa-solid fa-arrow-up-right-from-square"
+              />
+            </span>
             <div className={css.modalDescription}>
               서울 및 경기 일부 지역 당일배송 가능
             </div>
