@@ -37,7 +37,6 @@ function Login() {
         return response.json();
       })
       .then(result => {
-        console.log(result);
         // localStorage.getItem("token");
 
         if (result.message.includes('SUCCESS')) {
@@ -48,7 +47,7 @@ function Login() {
         // console.log(localStorage);
       });
 
-    // test@testtest.co.kr
+    // t@t.kr
     // testtest
   };
 
@@ -62,7 +61,7 @@ function Login() {
             name="email"
             type="text"
             placeholder="이메일"
-            autoComplete="off"
+            // autoComplete="off"
             onChange={handleInputsByName}
           />
         </div>
@@ -73,7 +72,7 @@ function Login() {
             name="password"
             type="password"
             placeholder="비밀번호"
-            autoComplete="off"
+            // autoComplete="off"
             onChange={handleInputsByName}
           />
         </div>

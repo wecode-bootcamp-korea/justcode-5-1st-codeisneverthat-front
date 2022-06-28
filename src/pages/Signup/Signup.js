@@ -29,8 +29,14 @@ function Signup() {
         password: inputs.password,
       }),
     })
-      .then(res => res.json())
-      .then(result => console.log('결과: ', result));
+      .then(res => {
+        if (res.status === 201) {
+          alert('회원가입에 성공하였습니다.');
+          navigate('/Home');
+        }
+        return res.json();
+      })
+      .then(result => console.log(result));
   };
 
   return (

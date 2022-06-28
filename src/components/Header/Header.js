@@ -1,14 +1,97 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
 
 import css from './Header.module.scss';
 
 function Header() {
+  const location = useLocation();
+  // useEffect(() => {
+  //   console.log('sdf');
+  //   localStorage.setItem('token', token);
+  //   console.log(localStorage);
+  // }, [location]);
+
+  /*const useStorage = storageName => {
+    const checkStorage = key => {
+      const storedData = localStorage.getItem(key);
+      if (!storedData) console.log('Local storage is empty');
+    };
+
+    useEffect(() => {
+      // when app loaded
+      checkStorage(storageName);
+
+      // when storage updated
+      const handler = ({ key }) => checkStorage(key);
+      window.addEventListener('storage', handler);
+      return () => window.removeEventListener('storage', handler);
+    }, []);
+  }; */
+
   const [isShowing, setIsShowing] = useState(false);
   const openModal = () => {
     setIsShowing(!isShowing);
+  };
+
+  const [token, setToken] = useState(() => {
+    const saved = localStorage.getItem('token');
+    return saved || '';
+  });
+
+  // console.log(location);
+  // useEffect(() => {
+  //   // console.log('location');
+  //   // setToken(token);
+  //   // console.log('location' + token);
+  //   const saved = localStorage.getItem('token');
+  // }, [location]);
+
+  // useEffect(() => {
+  //   const saved = localStorage.getItem('token');
+  //   // console.log('useeffect');
+  //   // setToken(token);
+  //   // console.log('useeffect' + token);
+  // }, [token]);
+
+  // const [loginButton, setLoginButton] = useState('LOGIN');
+
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/Login', {
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json',
+  //       Authorization: localStorage.token,
+  //       Accept: 'application/json',
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(token);
+  //     });
+  //   return () => {
+  //     console.log('ㄴㄴ');
+  //   };
+  // }, [location]);
+
+  // console.log(token, '+++++++');
+
+  useEffect(() => {
+    console.log(localStorage.token);
+    const saved = localStorage.token;
+    return saved;
+  }, [location]);
+
+  const handleLogoutToken = () => {
+    console.log('눌림');
+    localStorage.removeItem('token');
+  };
+
+  const checkToken = saved => {
+    if (saved) {
+      return true;
+    }
+    return false;
   };
 
   return (
@@ -173,7 +256,11 @@ function Header() {
                 </Link>
               </li>
               <li>
-                <Link to="/Login">LOGIN</Link>
+                {checkToken ? (
+                  <button onClick={handleLogoutToken}>LOGOUT</button>
+                ) : (
+                  <Link to="/Login">LOGIN</Link>
+                )}
               </li>
               <li>
                 <Link to="/cart">
