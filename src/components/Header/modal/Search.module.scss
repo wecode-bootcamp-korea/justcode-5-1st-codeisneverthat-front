@@ -1,12 +1,16 @@
 @import '../../../styles/variables.scss';
 
 #search_wrap {
+  position: absolute;
+  top: 46px;
+  left: 50%;
   @include flexCenter;
   width: calc(100% - 80px);
   height: 56px;
-  margin: 0 auto;
   background: #fff;
   border: 1px solid #101010;
+  transform: translate(-50%, 0);
+  z-index: 100;
   .search_input {
     flex: 1;
     padding: 18px 20px;
