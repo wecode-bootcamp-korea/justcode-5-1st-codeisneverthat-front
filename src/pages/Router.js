@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Header from '../components/Header/Header';
@@ -13,12 +13,20 @@ import Top from './Top/Top';
 import Product from './Product/Product';
 
 function Router() {
+  const [token, setToken] = useState(() => {
+    const saved = localStorage.getItem('token');
+    return saved || '';
+  });
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header token={token} setToken={setToken} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login token={token} setToken={setToken} />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/findpassword" element={<Findpassword />} />
         <Route path="/collections" element={<Collections />} />

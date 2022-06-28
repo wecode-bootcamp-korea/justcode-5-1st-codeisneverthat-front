@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import css from './Login.module.scss';
 
-function Login() {
+function Login({ token, setToken }) {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     email: '',
@@ -30,7 +30,7 @@ function Login() {
     })
       .then(response => {
         if (response.status === 201) {
-          navigate('/Home');
+          navigate('/');
         } else {
           alert('로그인/비밀번호를 확인해주세요');
         }
@@ -41,6 +41,7 @@ function Login() {
 
         if (result.message.includes('SUCCESS')) {
           localStorage.setItem('token', result.token);
+          setToken(result.token);
         } else {
           localStorage.setItem('token', '');
         }
