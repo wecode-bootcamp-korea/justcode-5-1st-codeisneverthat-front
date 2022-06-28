@@ -1,2 +1,139 @@
-.container {
+@import '../../styles/variables.scss';
+
+#header {
+  width: 100%;
+
+  .cont {
+    position: relative;
+    width: 100%;
+    @include flexSpaceBetween;
+    padding: 12px 40px;
+
+    .header_left {
+      display: flex;
+      align-items: center;
+      .left_menu {
+        display: flex;
+        .left_menu_li {
+          position: relative;
+          & > .btn_link {
+            display: flex;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 4px 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.4px;
+
+            &:hover {
+              @include hoverColor;
+              transition: color 0.2s ease;
+            }
+          }
+
+          .shop_menu {
+            position: absolute;
+            top: 24px;
+            left: -40px;
+            display: none;
+            width: 266px;
+            padding: 10px 40px;
+            background: #fff;
+            z-index: 10;
+            ul li {
+              position: relative;
+              width: 100%;
+              a {
+                position: relative;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                padding: 6px 20px;
+                font-size: 16px;
+                font-weight: 400;
+                transition: all 0.4s ease-in-out;
+
+                &:hover:before {
+                  position: relative;
+                  content: '';
+                  display: inline-block;
+                  width: 8px;
+                  height: 8px;
+                  margin: 0 4px 0 -12px;
+                  background: #0e0;
+                  border-radius: 3px;
+                }
+              }
+            }
+            .menu_archieves {
+              ul {
+                display: none;
+                position: absolute;
+                left: 94px;
+                top: 2px;
+                a:hover:before {
+                  display: none;
+                }
+              }
+              &:hover {
+                ul {
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+
+        .header_shop:hover {
+          & .shop_menu {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      img {
+        width: 200px;
+      }
+    }
+
+    .header_right {
+      display: flex;
+      align-items: center;
+      ul {
+        display: flex;
+        li {
+          font-size: 16px;
+          font-weight: 500;
+          .btn_link {
+            display: flex;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 4px 8px;
+            letter-spacing: -0.4px;
+            text-transform: uppercase;
+            span {
+              display: inline-block;
+              width: 22px;
+              height: 22px;
+              background: #111;
+              margin-left: 4px;
+              border-radius: 50%;
+              color: #fff;
+              font-size: 16px;
+              text-align: center;
+            }
+            &:hover {
+              @include hoverColor;
+              transition: color 0.2s ease;
+            }
+          }
+        }
+      }
+    }
+  }
 }
