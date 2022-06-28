@@ -109,7 +109,8 @@
         li {
           font-size: 16px;
           font-weight: 500;
-          a {
+          .btn_link {
+            display: flex;
             font-size: 16px;
             font-weight: 500;
             padding: 4px 8px;

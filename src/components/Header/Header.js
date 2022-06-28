@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
 
 import css from './Header.module.scss';
 
-function Header() {
+function Header({ token, setToken }) {
   const [isShowing, setIsShowing] = useState(false);
   const openModal = () => {
     setIsShowing(!isShowing);
+  };
+  const handleLogoutToken = () => {
+    localStorage.removeItem('token');
+    setToken('');
+    alert('로그아웃 되었습니다.');
   };
 
   return (
@@ -168,15 +173,27 @@ function Header() {
           <div className={css.header_right}>
             <ul>
               <li>
-                <Link to="#" onClick={e => e.preventDefault()}>
+                <Link
+                  to="#"
+                  className={css.btn_link}
+                  onClick={e => e.preventDefault()}
+                >
                   KOR / ₩
                 </Link>
               </li>
               <li>
-                <Link to="/Login">LOGIN</Link>
+                {token ? (
+                  <button className={css.btn_link} onClick={handleLogoutToken}>
+                    LOGOUT
+                  </button>
+                ) : (
+                  <Link className={css.btn_link} to="/Login">
+                    LOGIN
+                  </Link>
+                )}
               </li>
               <li>
-                <Link to="/cart">
+                <Link className={css.btn_link} to="/cart">
                   CART
                   <span>0</span>
                 </Link>
