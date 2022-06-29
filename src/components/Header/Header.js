@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
 
@@ -23,48 +23,28 @@ function Header({ token, setToken }) {
           <div className={css.header_left}>
             <ul className={css.left_menu}>
               <li className={`${css.left_menu_li} ${css.header_shop}`}>
-                <Link
-                  className={css.btn_link}
-                  to="#"
-                  onClick={e => e.preventDefault()}
-                >
+                <Link className={css.btn_link} to="/collections">
                   SHOP
                 </Link>
                 <div className={css.shop_menu}>
                   <ul>
                     <li>
-                      <Link to="#" onClick={e => e.preventDefault()}>
-                        New
-                      </Link>
+                      <Link to="/collections">All</Link>
                     </li>
                     <li>
-                      <Link to="#" onClick={e => e.preventDefault()}>
-                        All
-                      </Link>
+                      <Link to="/collections?category=Tees">Tees</Link>
                     </li>
                     <li>
-                      <Link to="#" onClick={e => e.preventDefault()}>
-                        Outerwear
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="#" onClick={e => e.preventDefault()}>
+                      <Link to="/collections?category=Sweatshirts">
                         Sweatshirts
                       </Link>
                     </li>
                     <li>
+                      <Link to="/collections?category=Shirts">Shirts</Link>
+                    </li>
+                    <li>
                       <Link to="#" onClick={e => e.preventDefault()}>
                         HDP Series
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="#" onClick={e => e.preventDefault()}>
-                        Tees
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="#" onClick={e => e.preventDefault()}>
-                        Shirts
                       </Link>
                     </li>
                     <li>
@@ -159,15 +139,12 @@ function Header({ token, setToken }) {
                 <button className={css.btn_link} onClick={openModal}>
                   SEARCH
                 </button>
-                {/* <Link to="#" onClick={e => e.preventDefault()}>
-                  SEARCH
-                </Link> */}
               </li>
             </ul>
           </div>
           <div className={css.logo}>
             <Link to="/">
-              <img src="images/logo.svg" />
+              <img src="images/logo.svg" alt="codeisneverthat logo" />
             </Link>
           </div>
           <div className={css.header_right}>
