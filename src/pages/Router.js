@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
 
 import Home from './Home/Home';
 import Login from './Login/Login';
