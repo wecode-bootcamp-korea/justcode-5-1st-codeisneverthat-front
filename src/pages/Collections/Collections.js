@@ -7,7 +7,7 @@ function Collections() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:10010/collection', {
+    fetch('http://localhost:10010/collections', {
       method: 'GET',
     })
       .then(res => res.json())
