@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
+import { UserContext } from '../../store/UserStore';
 
 import css from './Header.module.scss';
 
-function Header({ token, setToken }) {
+function Header() {
+  const context = useContext(UserContext);
+  const { token, setToken } = context;
+
   const [isShowing, setIsShowing] = useState(false);
   const openModal = () => {
     setIsShowing(!isShowing);
