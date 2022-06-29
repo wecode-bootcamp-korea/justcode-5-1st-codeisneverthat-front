@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from '../../pages/Cart/Cart.module.scss';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 function Item({ item, setArticles, articles }) {
   console.log(item);
@@ -66,6 +65,7 @@ function Item({ item, setArticles, articles }) {
                 className={css.cart_quantity}
                 type="text"
                 value={quantity}
+                readOnly
                 min="1"
               />
               <button
