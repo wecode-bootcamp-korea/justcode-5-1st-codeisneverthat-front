@@ -144,7 +144,7 @@ function Header({ token, setToken }) {
           </div>
           <div className={css.logo}>
             <Link to="/">
-              <img src="images/logo.svg" />
+              <img src="images/logo.svg" alt="codeisneverthat logo" />
             </Link>
           </div>
           <div className={css.header_right}>
