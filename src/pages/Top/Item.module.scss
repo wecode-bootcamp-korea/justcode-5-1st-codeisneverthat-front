@@ -25,6 +25,7 @@
         margin:0px 0px 10px;
         padding: 7px 0px;
         border-radius: 20px;  
+        cursor:pointer;
     
      }
 
@@ -40,12 +41,14 @@
         margin:0px;
         padding:0px; 
         text-overflow: ellipsis;
+        cursor:pointer;
 
     } 
  
     .imageBox {
         height: 100%;
         width:100%;
+        cursor:pointer;
     
     }
     .imagesBlock2{
@@ -70,6 +73,7 @@
         height: 88px;
         border-bottom: solid black 1px;
         margin: 0 50px;
+        padding:0px;
         overflow-x: hidden;
         overflow-y: hidden;
         // justify-items: center; 
