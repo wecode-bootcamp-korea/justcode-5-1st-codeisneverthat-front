@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import css from './Cart.module.scss';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Items from '../../components/CartItem/Items';
+import { UserContext } from '../../store/UserStore';
 
 // const items = [
 //   {
@@ -40,14 +41,20 @@ import Items from '../../components/CartItem/Items';
 // ];
 
 function Cart() {
+  const context = useContext(UserContext);
+  const { token, setToken } = context;
+
   const [items, setItems] = useState([]);
-  const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:10010/cart/${id}`)
+    fetch('http://localhost:10010/cart', {
+      method: 'GET',
+      headers: {
+        Authorization: token,
+      },
+    })
       .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setItems(...items, data);
+      .then(item => {
+        setItems(item);
       });
   }, []);
 

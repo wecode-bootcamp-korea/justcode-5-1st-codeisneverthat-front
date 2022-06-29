@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import css from './Login.module.scss';
+import { UserContext } from '../../store/UserStore';
 
-function Login({ token, setToken }) {
+function Login() {
+  const context = useContext(UserContext);
+  const { token, setToken } = context;
+
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     email: '',
