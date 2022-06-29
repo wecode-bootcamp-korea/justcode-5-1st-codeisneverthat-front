@@ -1,0 +1,48 @@
+.block {
+    display: flex; 
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    box-sizing: border-box;  
+    background-color: white; 
+    width: 20%;
+    height: 10%;
+    padding: 10px 20px; 
+    cursor:pointer;
+}
+
+.image{
+    display:inline-block;
+    width: 100%;
+    height:50%;
+}
+.subimages {
+    display: flex; 
+    justify-content: center; 
+    flex-direction: row;
+}
+.subimage1{
+    padding: 3px;
+    width:15%;
+    height:7%;
+
+}
+.subimage2{
+    padding: 3px;
+    width:15%;
+    height:7%;
+
+}
+
+
+
+.name {
+    text-align: center;
+    font-size: 20px; 
+}
+.price {
+    text-align: center;
+    font-size: 20px;
+
+}
