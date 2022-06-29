@@ -1,0 +1,203 @@
+
+// @font-face {
+//     font-family: "BlackhanSans";
+//     font-weight: 50;
+//     src: url("./fonts/BlackHanSans-Regular.ttf") format("truetype");
+//   }
+@media (max-width:1149px){
+    .block {
+        background-color: white;
+        height:100%;
+        border-bottom: solid black 1px;
+        margin: 0 50px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        // justify-items: center; 
+    }
+    .rankBlock{
+        position:relative;
+        top:25px;
+        text-align: center;
+        background-color: black;
+        width:50px;
+        height:34px;
+        color:white;
+        margin:0px 0px 10px;
+        padding: 7px 0px;
+        border-radius: 20px;  
+    
+     }
+
+     .nameBlock{
+        width:60%;
+        height:88px;
+        // white-space: nowrap;
+        // overflow:hidden;
+        position:relative;
+        top:30px;
+        display: inline-block;
+        font-size:25px;
+        margin:0px;
+        padding:0px; 
+        text-overflow: ellipsis;
+
+    } 
+ 
+    .imageBox {
+        height: 100%;
+        width:100%;
+    
+    }
+    .imagesBlock2{
+        height:80%;
+        width:50%;
+        position: relative; 
+        left: 50%;
+    }
+    .imagesBlock1 {
+        display:none;
+      
+    }
+    .typeBlock {
+    display: none; 
+    }
+}   
+
+
+@media (min-width: 1150px) {
+    .block {
+        background-color: white;
+        height: 88px;
+        border-bottom: solid black 1px;
+        margin: 0 50px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        // justify-items: center; 
+    }
+
+    .rankBlock{
+    position:relative;
+    top:25px;
+    text-align: center;
+    background-color: black;
+    width:50px;
+    height:34px;
+    color:white;
+    margin:0px 0px 10px;
+    padding: 7px 0px;
+    border-radius: 20px;  
+
+    }
+    .nameBlock{
+        width:60%;
+        height:88px;
+        white-space: nowrap;
+        overflow:hidden;
+        position:relative;
+        left:70px;
+        bottom:38px;
+        display: inline-block;
+        font-size:50px;
+        margin:0px;
+        padding:0px; 
+        text-overflow: ellipsis;
+
+    } 
+    .typeBlock {
+        width:200px;
+        position:relative;
+        left:65%;
+        font-size:50px;
+        bottom:130px;
+        margin:0px;
+        padding:0px;
+    } 
+    .imageBox {
+        display: flex;
+        position: relative; 
+        left: 90%;
+        bottom: 180px; 
+    }
+    .imagesBlock1 {
+            bottom: 155px;
+            width:60px;
+            height:70px;
+            
+    }     
+    .imagesBlock2 {
+        bottom: 155px;
+        width:60px;
+        height:70px;
+        
+}  
+
+}
+
+
+
+
+
+
+
+
+
+// .block{
+ 
+//     background-color: white;
+//     height: 88px; 
+//     border-bottom: solid black 1px; 
+//     margin: 0px 50px;
+//     overflow-x: hidden;
+//     overflow-y: hidden;
+//     justify-items: center;
+// }
+
+// .rankBlock{
+//     position:relative;
+//     top:25px;
+//     text-align: center;
+//     background-color: black;
+//     width:50px;
+//     height:34px;
+//     color:white;
+//     margin:0px 0px 10px;
+//     padding: 7px 0px;
+//     border-radius: 20px;  
+// }
+// .nameBlock{
+//     position:relative;
+//     left:70px;
+//     bottom:38px;
+//     text-align: center;
+//     display: inline-block;
+//     font-size:50px;
+//     margin:0px;
+//     padding:0px;
+    
+// }
+
+// .typeBlock {
+//     position:relative;
+//     left:860px;
+//     bottom:10px;
+//     font-size:50px;
+//     bottom:100px;
+//     margin:0px;
+//     padding:0px;
+// }
+
+// .imageBox {
+//     display: flex;
+//     position: relative; 
+//     left: 1130px;
+//     bottom: 155px; 
+
+
+// }
+// .imagesBlock {
+
+//     bottom: 155px;
+//     width:60px;
+//     height:70px;
+
+// }
