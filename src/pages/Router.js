@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 
 import Home from './Home/Home';
 import Login from './Login/Login';
@@ -11,11 +14,20 @@ import Product from './Product/Product';
 import Cart from './Cart/Cart';
 
 function Router() {
+  const [token, setToken] = useState(() => {
+    const saved = localStorage.getItem('token');
+    return saved || '';
+  });
+
   return (
     <BrowserRouter>
+      <Header token={token} setToken={setToken} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login token={token} setToken={setToken} />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/findpassword" element={<Findpassword />} />
         <Route path="/collections" element={<Collections />} />
@@ -23,6 +35,7 @@ function Router() {
         <Route path="/product" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

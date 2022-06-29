@@ -1,2 +1,57 @@
-.container {
+@import '../../styles/variables.scss';
+
+#signup {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  height: calc(100vh - 126px);
+  animation: top 0.6s linear;
+  @keyframes top {
+    0% {
+      top: 40px;
+    }
+    100% {
+      top: 0;
+    }
+  }
+
+  .cont {
+    width: 600px;
+    padding-top: 60px;
+    .cnt_div {
+      width: 100%;
+      margin-top: 20px;
+      label {
+        font-size: 16px;
+      }
+      input {
+        width: 100%;
+        border: 1px solid #101010;
+        padding: 12px 8px;
+        margin-top: 8px;
+      }
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    .btn_black {
+      width: 100%;
+      background: #101010;
+      color: #fff;
+      border-radius: 24px;
+      padding: 10px 0;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .btn_goLink {
+      display: block;
+      margin-top: 16px;
+      font-size: 16px;
+      text-decoration: underline;
+    }
+    .btn_goLink + .btn_goLink {
+      margin-top: 12px;
+    }
+  }
 }
