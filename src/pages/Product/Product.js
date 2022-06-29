@@ -13,18 +13,46 @@ import {
 library.add(faAngleLeft, faAngleRight, faArrowUpRightFromSquare);
 
 function Product() {
-  // const [productDetails, setProductDetails] = useState([]);
+  const [productDetails, setProductDetails] = useState([]);
 
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/data/productDetailData.json', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setProductDetails(data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch('http://localhost:3000/data/productDetailData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setProductDetails(data);
+      });
+  }, []);
 
+  const productId = 1;
+  const { colorImage, stockBySize } = productDetails.data[0];
+
+  const accessImageData = () => {
+    const colorImageById = colorImage.filter(v => v.id === productId)[0];
+    return colorImageById.images;
+  };
+
+  const colorImageData = accessImageData();
+  console.log('colorImageData', colorImageData);
+
+  const accessStockData = () => {
+    const stockBySizeById = stockBySize.filter(v => v.id === productId)[0];
+    return stockBySizeById.sizeStock;
+  };
+
+  const stockBySizeData = accessStockData();
+  console.log('stockBySizeData', stockBySizeData);
+  // const apiData = productDetails.data[0].colorImage;
+  // console.log('apiData = ', apiData);
+
+  // const colorImageArr = Object.fromEntries(
+  //   Object.entries(apiData).filter(id => (id = 1))
+  // );
+  // console.log(colorImageArr);
+  // Object.fromEntries(Object.entries(obj).filter(([key]) => key.includes('Name')));
+
+  // console.log(Object.entries(apiData).filter(id => (Object.key = 1)));
   // key={productDetails.datas.data.productId}
   // id={productDetails.data.productName}
   // price={productDetails.data.price}
