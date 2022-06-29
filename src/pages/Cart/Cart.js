@@ -1,53 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import css from './Cart.module.scss';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Items from '../../components/CartItem/Items';
-
-// const items = [
-//   {
-//     id: 1,
-//     url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/NB-TNT-Waffle-Hoodie-DARK-GREY1_1080x.jpg?v=1644397496',
-//     name: 'Good Tee',
-//     color: 'Black',
-//     size: 'OS',
-//     price: 55000,
-//   },
-//   {
-//     id: 2,
-//     url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/Indigo-Dyed-Tee-Indigo1_1080x.jpg?v=1652950879',
-//     name: 'Awesome Tee',
-//     color: 'Blue',
-//     size: 'OS',
-//     price: 15000,
-//   },
-//   {
-//     id: 3,
-//     url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/Button-Up-S-S-Polo-Ivory1_1080x.jpg?v=1649912722',
-//     name: 'Good Tee',
-//     color: 'Black',
-//     size: 'M',
-//     price: 35000,
-//   },
-//   {
-//     id: 4,
-//     url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/Rolled-Sweater-Ivory1_1080x.jpg?v=1645939604',
-//     name: 'Good Tee',
-//     color: 'Red',
-//     size: 'S',
-//     price: 50000,
-//   },
-// ];
+import { UserContext } from '../../store/UserStore';
 
 function Cart() {
+  const context = useContext(UserContext);
+  const { token, setToken } = context;
+
   const [items, setItems] = useState([]);
-  const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:10010/cart/${id}`)
+    fetch('http://localhost:10010/cart', {
+      method: 'GET',
+      headers: {
+        Authorization: token,
+      },
+    })
       .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setItems(...items, data);
+      .then(item => {
+        setItems(item);
       });
   }, []);
 

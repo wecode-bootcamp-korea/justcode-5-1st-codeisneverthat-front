@@ -1,9 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Item from './Item';
 
 function Items({ items }) {
-  const [articles, setArticles] = useState(items);
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    setArticles(items);
+  }, [items]);
 
   return (
     <>
