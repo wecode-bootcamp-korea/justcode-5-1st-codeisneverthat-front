@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import css from './Collections.module.scss';
 import Block from './Block';
 
 function Collections() {
   const [items, setItems] = useState([]);
+  const location = useLocation();
+  useEffect(() => {}, [location]);
 
   useEffect(() => {
-    fetch('http://localhost:10010/collection', {
+    fetch(`http://localhost:10010/collections${location.search}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setItems(...items, data);
       });
-  }, []);
+  }, [location]);
 
   return (
     <div className={css.container}>
