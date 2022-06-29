@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import css from '../../pages/Cart/Cart.module.scss';
 import { Link } from 'react-router-dom';
 
-function Item({ item, setArticles, articles }) {
-  console.log(item);
-
+function Item({ item, items, setItems }) {
   const [quantity, setQuantity] = useState(1);
   const minusOne = () => {
     setQuantity(current => current - 1);
@@ -21,8 +19,8 @@ function Item({ item, setArticles, articles }) {
   const totalPricePerItem = price * quantity;
 
   const handleDeleteClick = () => {
-    const newArticles = articles.filter(article => article.id !== item.id);
-    setArticles(newArticles);
+    const newItems = items.filter(each => each.id !== item.id);
+    setItems(newItems);
   };
 
   const handleMinusClick = () => {

@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Item from './Item';
 
-function Items({ items }) {
-  const [articles, setArticles] = useState([]);
-  useEffect(() => {
-    setArticles(items);
-  }, [items]);
-
+function Items({ items, setItems }) {
   return (
     <>
-      {articles.map(item => (
-        <Item
-          item={item}
-          key={item.id}
-          setArticles={setArticles}
-          articles={articles}
-        />
+      {items.map(item => (
+        <Item item={item} key={item.id} setItems={setItems} items={items} />
       ))}
     </>
   );

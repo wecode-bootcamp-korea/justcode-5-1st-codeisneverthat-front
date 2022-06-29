@@ -1,15 +1,24 @@
 import React, { useContext } from 'react';
 import css from './Cart.module.scss';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Items from '../../components/CartItem/Items';
 import { UserContext } from '../../store/UserStore';
 
 function Cart() {
   const context = useContext(UserContext);
-  const { token, setToken } = context;
+  const { token } = context;
 
   const [items, setItems] = useState([]);
+  const [subtotal, setSubtotal] = useState(0);
+
+  useEffect(() => {
+    const sum = items.reduce((sum, item) => {
+      return sum + item.price;
+    }, 0);
+    setSubtotal(sum);
+  }, [items]);
+
   useEffect(() => {
     fetch('http://localhost:10010/cart', {
       method: 'GET',
@@ -18,10 +27,8 @@ function Cart() {
       },
     })
       .then(res => res.json())
-      .then(item => {
-        setItems(item);
-      });
-  }, []);
+      .then(items => setItems(items));
+  }, [token, setItems]);
 
   return (
     <div className={css.container}>
@@ -34,13 +41,13 @@ function Cart() {
                 BACK
               </Link>
             </div>
-            <Items items={items} />
+            <Items items={items} setItems={setItems} />
           </div>
           <div className={css.cart_bottom}>
             <div className={css.cart_save_box}>
               <div className={css.cart_subtotal}>
                 <span className={css.cart_subtotal_text}>SUBTOTAL</span>
-                <span>￦기능구현해야함</span>
+                <span>￦{subtotal.toLocaleString()}</span>
               </div>
               <div className={css.cart_save_text}>
                 적립금은 로그인 했을 시에만 이용 가능합니다. <br />
