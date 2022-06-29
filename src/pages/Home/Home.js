@@ -7,92 +7,96 @@ function Home() {
     <>
       <div className={css.image_container}>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_1.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
-            <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_1.png" />
-          </a>
-        </div>
-        <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_2.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_3.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_4.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_5.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_6.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_7.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_8.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_9.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_10.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_11.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_12.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_13.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_14.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_15.png" />
-          </a>
+          </Link>
         </div>
         <div className={css.images}>
-          <a herf="#">
+          <Link to="/collections">
             <img src="https://cdn.shopify.com/s/files/1/0562/4971/2815/files/home220607_16.png" />
-          </a>
+          </Link>
         </div>
-        <Link class="main-text" to="/collections">
+        <Link className={css.maintext} to="/collections">
           Shop All
+        </Link>
+        <Link className={css.maintext} to="/features">
+          Features
+        </Link>
+        <Link className={css.maintext} to="/collections">
+          Stores
+        </Link>
+        <Link className={css.maintext} to="/collections">
+          Contact
         </Link>
       </div>
     </>
