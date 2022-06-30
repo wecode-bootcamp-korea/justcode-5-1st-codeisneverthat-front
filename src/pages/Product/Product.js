@@ -17,8 +17,6 @@ function Product() {
   const [productDetails, setProductDetails] = useState({});
   const location = useLocation();
 
-
-  console.log(location.search);
   useEffect(() => {
     fetch(`http://localhost:10010/product${location.search}`, {
       method: 'GET',
@@ -26,29 +24,60 @@ function Product() {
       .then(res => res.json())
       .then(data => {
         setProductDetails(data);
-        console.log(data.data.category);
       });
   }, [location]);
 
-  // const productId = 1;
-  // const { colorImage, stockBySize } = productDetails.data[0];
+  const backData = productDetails?.data;
+  let colorImageData = new Array();
+  let stockBySizeData = new Array();
+  let colorData = new Object();
 
-  // const accessImageData = () => {
-  //   const colorImageById = colorImage.filter(v => v.id === productId)[0];
-  //   return colorImageById.images;
+  if (productDetails.data) {
+    const productId = productDetails.data.productId;
+
+    const { colorImage, stockBySize } = productDetails.data;
+
+    const accessImageData = () => {
+      const colorImageById = colorImage.filter(v => v.id === productId)[0];
+      return colorImageById.images;
+    };
+
+    colorImageData = accessImageData();
+
+    const accessStockData = () => {
+      const stockBySizeById = stockBySize.filter(v => v.id === productId)[0];
+      return stockBySizeById.size_stock;
+    };
+
+    stockBySizeData = accessStockData();
+
+    const accessColorData = () => {
+      const colorById = colorImage.filter(v => v.id === productId)[0];
+      return colorById.color;
+    };
+    colorData = accessColorData();
+  }
+
+  const [sliderNum, setSliderNum] = useState(1);
+
+  const goToPrevImage = () => {
+    if (sliderNum === 1) {
+      setSliderNum(colorImageData.length);
+    } else setSliderNum(sliderNum - 1);
+  };
+
+  const goToNextImage = () => {
+    if (sliderNum === colorImageData.length) {
+      setSliderNum(1);
+    } else setSliderNum(sliderNum + 1);
+  };
+
+  // const extrafunction = () => {
+  //   console.log('a');
+  //   return () => {
+  //     console.log('b');
+  //   };
   // };
-
-
-  // const colorImageData = accessImageData();
-  // // console.log('colorImageData', colorImageData);
-
-  // const accessStockData = () => {
-  //   const stockBySizeById = stockBySize.filter(v => v.id === productId)[0];
-  //   return stockBySizeById.sizeStock;
-  // };
-
-  // const stockBySizeData = accessStockData();
-  // console.log('stockBySizeData', stockBySizeData);
 
   // key={productDetails.datas.data.productId}
   // id={productDetails.data.productName}
@@ -62,31 +91,10 @@ function Product() {
   // colorImage={productDetails.data.colorImage[1].images[0]}
   // productSize={productDetails.data.stockBySize.sizeStock}
 
-  const [sliderNum, setSliderNum] = useState(1);
-
-  const goToPrevImage = () => {
-    if (sliderNum === 1) {
-      setSliderNum(images.length);
-    } else setSliderNum(sliderNum - 1);
-  };
-
-  const goToNextImage = () => {
-    if (sliderNum === images.length) {
-      setSliderNum(1);
-    } else setSliderNum(sliderNum + 1);
-  };
-
-  // const extrafunction = () => {
-  //   console.log('a');
-  //   return () => {
-  //     console.log('b');
-  //   };
-  // };
-
   return (
     <div className={css.container}>
       <div className={css.productThumbnailContainer}>
-        {images.map((v, i) => (
+        {colorImageData.map((v, i) => (
           <div
             className={css.productThumbnail}
             key={v.id}
@@ -117,7 +125,7 @@ function Product() {
               transform: 'translate(-' + (sliderNum - 1) * 460 + 'px, 0px)',
             }}
           >
-            {images.map(v => (
+            {colorImageData.map(v => (
               <img
                 className={css.productImage}
                 key={v.id}
@@ -128,7 +136,7 @@ function Product() {
           </div>
           <div className={css.sliderPageContainer}>
             <span className={css.sliderPage}>
-              {sliderNum}/{images.length}
+              {sliderNum}/{colorImageData.length}
             </span>
           </div>
         </div>
@@ -141,54 +149,40 @@ function Product() {
       </div>
       <div className={css.productInfoContainer}>
         <h1 className={css.productHead}>
-          <span className={css.productName}>DSN-Logo Tee</span>
-          <span className={css.productColor}>Black</span>
+          <span className={css.productName}>{backData?.productName}</span>
+          <span className={css.productColor}>{colorData.color}</span>
         </h1>
         <div>
-          <span className={css.productPrice}>₩45,000</span>
+          <span className={css.productPrice}>{backData?.price}</span>
         </div>
         <div className={css.productColors}>
-          <div className={css.productColorImage}>
-            <div className={css.colorImageDetailBox}>
-              <div className={css.colorImageDetail}>White</div>
-            </div>
-            <img
-              alt="White"
-              src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-White1_1080x.jpg?v=1646387533"
-            />
-          </div>
-          <div className={css.productColorImage}>
-            <div className={css.colorImageDetailBox}>
-              <div className={css.colorImageDetail}>Black</div>
-            </div>
-            <img
-              alt="Black"
-              src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black1_1080x.jpg?v=1646387533"
-            />
-          </div>
-          <div className={css.productColorImage}>
-            <div className={css.colorImageDetailBox}>
-              <div className={css.colorImageDetail}>Dark Mocha</div>
-            </div>
-            <img
-              alt="Dark Mocha"
-              src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Dark-Mocha1_1080x.jpg?v=1646387533"
-            />
-          </div>
+          {backData?.colorImage &&
+            backData.colorImage.map(v => (
+              <div className={css.productColorImage} key={v.id}>
+                <div className={css.colorImageDetailBox} key={v.id}>
+                  <div className={css.colorImageDetail} key={v.id}>
+                    {v.color.color}
+                  </div>
+                </div>
+                <img key={v.id} alt={v.color.color} src={v.images[0].url} />
+              </div>
+            ))}
         </div>
         <div className={css.productSizes}>
-          <div className={css.sizeBox}>S</div>
-          <div className={css.sizeBox}>M</div>
-          <div className={css.sizeBox}>L</div>
+          {stockBySizeData?.map(v => (
+            <div className={css.sizeBox} key={v.product_detatil?.id}>
+              {v.size}
+            </div>
+          ))}
         </div>
         <div className={css.addCartButtonContainer}>
           <span className={css.addCartButton}>ADD TO CART</span>
         </div>
         <div className={css.productDescriptions}>
-          <div className={css.productDescription}>Flag label on sleeve hem</div>
-          <div className={css.productDescription}>Pigment dying for Grey</div>
-          <div className={css.productDescription}>Cotton 100%</div>
-          <div className={css.productDescription}>Made in Bangladesh</div>
+          <div className={css.productDescription}>{backData?.description}</div>
+          <div className={css.productDescription}>
+            Made in {backData?.made_in}
+          </div>
         </div>
         <div>
           <div className={css.modalContainer}>
