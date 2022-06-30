@@ -3,8 +3,11 @@ import css from './Block.module.scss';
 import { Link } from 'react-router-dom';
 
 function Block(props) {
+  const id = props.id;
+  const link = '/product?id='.concat(id);
+  console.log(id);
   return (
-    <Link to="/collections" className={css.block}>
+    <Link to={link} className={css.block}>
       <img className={css.image} src={props.image}></img>
       <div className={css.subimages}>
         <img className={css.subimage1} src={props.image}></img>
