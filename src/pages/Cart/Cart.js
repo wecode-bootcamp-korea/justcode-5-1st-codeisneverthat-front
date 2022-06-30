@@ -4,7 +4,6 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Items from '../../components/CartItem/Items';
 import { UserContext } from '../../store/UserStore';
-import { updateItem } from '../../../../justcode-5-1st-codeisneverthat-back/models/cart';
 
 function Cart() {
   const context = useContext(UserContext);
