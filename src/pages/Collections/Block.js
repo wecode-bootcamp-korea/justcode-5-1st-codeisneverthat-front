@@ -13,7 +13,7 @@ function Block(props) {
     <div className={css.block}>
       <Link to={link}>
         {' '}
-        <img className={css.image} src={mainImage} />
+        <img className={css.image} src={props.image} />
       </Link>
       <div className={css.subimages}>
         <img
