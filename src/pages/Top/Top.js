@@ -13,7 +13,6 @@ function Top() {
   const [image, setImage] = useState('');
 
   useEffect(() => {
-    //window였었음
     document.addEventListener('mousemove', e => {
       setCursorX(e.clientX);
       setCursorY(e.clientY);
@@ -26,7 +25,7 @@ function Top() {
     })
       .then(res => res.json())
       .then(data => {
-        setItems(...items, data);
+        setItems(data);
       });
   }, []);
 
@@ -36,20 +35,14 @@ function Top() {
     <div className={css.container}>
       <ul className={css.project_list}>
         {items.map((item, index) => (
-          <Card
-            item={item}
-            index={index}
-            cursorX={cursorX}
-            cursorY={cursorY}
-            setImage={setImage}
-          ></Card>
+          <Card item={item} index={index} setImage={setImage}></Card>
         ))}
       </ul>
       <div
         className={css.cursor}
         style={{
-          left: cursorX + 'px',
-          top: cursorY + 'px',
+          left: cursorX + 5 + 'px',
+          top: cursorY + 5 + 'px',
         }}
       >
         {' '}
@@ -60,13 +53,17 @@ function Top() {
 }
 
 export default Top;
+
 function Card(props) {
-  const { item, index, cursorX, cursorY, setImage } = props;
+  const { item, index, setImage } = props;
 
   return (
     <li
       onMouseOver={() => {
         setImage(item.colorImage[0].images[0].url);
+      }}
+      onMouseLeave={() => {
+        setImage(' ');
       }}
     >
       <Link to="./collections">

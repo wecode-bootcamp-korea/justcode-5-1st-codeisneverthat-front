@@ -8,6 +8,7 @@ function Collections() {
   const [items, setItems] = useState([]);
   const location = useLocation();
   useEffect(() => {}, [location]);
+  console.log(location.search);
 
   useEffect(() => {
     fetch(`http://localhost:10010/collections${location.search}`, {
@@ -23,6 +24,7 @@ function Collections() {
     <div className={css.container}>
       {items.map(item => (
         <Block
+          id={item.productId}
           name={item.productName}
           price={item.price}
           type={item.categoryId}
@@ -35,4 +37,3 @@ function Collections() {
 }
 
 export default Collections;
-

@@ -1,9 +1,4 @@
 
-// @font-face {
-//     font-family: "BlackhanSans";
-//     font-weight: 50;
-//     src: url("./fonts/BlackHanSans-Regular.ttf") format("truetype");
-//   }
 @media (max-width:1149px){
     .block {
         background-color: white;
@@ -12,7 +7,7 @@
         margin: 0 50px;
         overflow-x: hidden;
         overflow-y: hidden;
-        // justify-items: center; 
+        cursor:pointer;
     }
     .rankBlock{
         position:relative;
@@ -26,14 +21,11 @@
         padding: 7px 0px;
         border-radius: 20px;  
         cursor:pointer;
-    
-     }
+    }
 
-     .nameBlock{
+    .nameBlock{
         width:60%;
         height:88px;
-        // white-space: nowrap;
-        // overflow:hidden;
         position:relative;
         top:30px;
         display: inline-block;
@@ -44,7 +36,6 @@
         cursor:pointer;
 
     } 
- 
     .imageBox {
         height: 100%;
         width:100%;
@@ -59,24 +50,39 @@
     }
     .imagesBlock1 {
         display:none;
-      
+    
     }
     .typeBlock {
     display: none; 
     }
+    .block:hover {
+        .rankBlock{
+        background-color: greenyellow;
+        }
+        .typeBlock{
+            color: greenyellow;
+        }
+        .nameBlock{
+            color: greenyellow;
+        }
+    }
+    
 }   
 
 
 @media (min-width: 1150px) {
+    body{
+        cursor:pointer;
+    }
     .block {
         background-color: white;
         height: 88px;
         border-bottom: solid black 1px;
         margin: 0 50px;
-        padding:0px;
         overflow-x: hidden;
         overflow-y: hidden;
-        // justify-items: center; 
+        cursor:pointer;
+        box-sizing: border-box;
     }
 
     .rankBlock{
@@ -90,6 +96,7 @@
     margin:0px 0px 10px;
     padding: 7px 0px;
     border-radius: 20px;  
+    box-sizing: border-box;
 
     }
     .nameBlock{
@@ -102,8 +109,7 @@
         bottom:38px;
         display: inline-block;
         font-size:50px;
-        margin:0px;
-        padding:0px; 
+        
         text-overflow: ellipsis;
 
     } 
@@ -113,8 +119,7 @@
         left:65%;
         font-size:50px;
         bottom:130px;
-        margin:0px;
-        padding:0px;
+     
     } 
     .imageBox {
         display: flex;
@@ -133,75 +138,19 @@
         width:60px;
         height:70px;
         
-}  
 
+}  
+span:hover {
+    .rankBlock{
+    background-color: greenyellow;
+    }
+    .typeBlock{
+        color: greenyellow;
+    }
+    .nameBlock{
+        color: greenyellow;
+    }
+    
 }
 
-
-
-
-
-
-
-
-
-// .block{
- 
-//     background-color: white;
-//     height: 88px; 
-//     border-bottom: solid black 1px; 
-//     margin: 0px 50px;
-//     overflow-x: hidden;
-//     overflow-y: hidden;
-//     justify-items: center;
-// }
-
-// .rankBlock{
-//     position:relative;
-//     top:25px;
-//     text-align: center;
-//     background-color: black;
-//     width:50px;
-//     height:34px;
-//     color:white;
-//     margin:0px 0px 10px;
-//     padding: 7px 0px;
-//     border-radius: 20px;  
-// }
-// .nameBlock{
-//     position:relative;
-//     left:70px;
-//     bottom:38px;
-//     text-align: center;
-//     display: inline-block;
-//     font-size:50px;
-//     margin:0px;
-//     padding:0px;
-    
-// }
-
-// .typeBlock {
-//     position:relative;
-//     left:860px;
-//     bottom:10px;
-//     font-size:50px;
-//     bottom:100px;
-//     margin:0px;
-//     padding:0px;
-// }
-
-// .imageBox {
-//     display: flex;
-//     position: relative; 
-//     left: 1130px;
-//     bottom: 155px; 
-
-
-// }
-// .imagesBlock {
-
-//     bottom: 155px;
-//     width:60px;
-//     height:70px;
-
-// }
+}
