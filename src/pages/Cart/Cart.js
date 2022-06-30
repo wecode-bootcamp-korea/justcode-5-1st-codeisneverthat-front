@@ -10,15 +10,6 @@ function Cart() {
   const { token } = context;
 
   const [items, setItems] = useState([]);
-  const [subtotal, setSubtotal] = useState(0);
-
-  useEffect(() => {
-    const sum = items.reduce((sum, item) => {
-      return sum + item.price;
-    }, 0);
-    setSubtotal(sum);
-  }, [items]);
-
   useEffect(() => {
     fetch('http://localhost:10010/cart', {
       method: 'GET',
@@ -27,8 +18,23 @@ function Cart() {
       },
     })
       .then(res => res.json())
-      .then(items => setItems(items));
+      .then(items => {
+        const cartItems = items.map(item => ({
+          ...item,
+          quantity: 1,
+          total: item.price * item.quantity,
+        }));
+        setItems(cartItems);
+      });
   }, [token, setItems]);
+
+  const [subtotal, setSubtotal] = useState(0);
+  useEffect(() => {
+    const sum = items.reduce((sum, item) => {
+      return sum + item.total;
+    }, 0);
+    setSubtotal(sum);
+  }, [items]);
 
   return (
     <div className={css.container}>

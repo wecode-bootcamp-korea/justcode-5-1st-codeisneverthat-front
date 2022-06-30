@@ -3,20 +3,35 @@ import css from '../../pages/Cart/Cart.module.scss';
 import { Link } from 'react-router-dom';
 
 function Item({ item, items, setItems }) {
-  const [quantity, setQuantity] = useState(1);
   const minusOne = () => {
-    setQuantity(current => current - 1);
+    const newItems = items.map(each => {
+      if (each.id === item.id) {
+        return {
+          ...each,
+          quantity: each.quantity - 1,
+          total: each.price * (each.quantity - 1),
+        };
+      } else {
+        return each;
+      }
+    });
+    setItems(newItems);
   };
+
   const plusOne = () => {
-    setQuantity(current => current + 1);
+    const newItems = items.map(each => {
+      if (each.id === item.id) {
+        return {
+          ...each,
+          quantity: each.quantity + 1,
+          total: each.price * (each.quantity + 1),
+        };
+      } else {
+        return each;
+      }
+    });
+    setItems(newItems);
   };
-
-  const [price, setPrice] = useState(item.price);
-  const totalPrice = event => {
-    setPrice(event.target.value);
-  };
-
-  const totalPricePerItem = price * quantity;
 
   const handleDeleteClick = () => {
     const newItems = items.filter(each => each.id !== item.id);
@@ -24,7 +39,7 @@ function Item({ item, items, setItems }) {
   };
 
   const handleMinusClick = () => {
-    if (quantity === 1) {
+    if (item.quantity === 1) {
       handleDeleteClick();
       return;
     }
@@ -62,20 +77,16 @@ function Item({ item, items, setItems }) {
               <input
                 className={css.cart_quantity}
                 type="text"
-                value={quantity}
+                value={item.quantity}
                 readOnly
                 min="1"
               />
-              <button
-                className={css.cart_quantity_plus}
-                onClick={plusOne}
-                onChange={totalPrice}
-              >
+              <button className={css.cart_quantity_plus} onClick={plusOne}>
                 &nbsp; +&nbsp;&nbsp;
               </button>
             </div>
             <div className={css.cart_price}>
-              <span>￦{totalPricePerItem.toLocaleString()}</span>
+              <span>￦{item.total.toLocaleString()}</span>
             </div>
           </div>
         </div>
