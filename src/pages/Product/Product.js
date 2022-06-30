@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import css from './Product.module.scss';
 
@@ -13,46 +14,40 @@ import {
 library.add(faAngleLeft, faAngleRight, faArrowUpRightFromSquare);
 
 function Product() {
-  const [productDetails, setProductDetails] = useState([]);
+  const [productDetails, setProductDetails] = useState({});
+  const location = useLocation();
 
+  console.log(location.search);
   useEffect(() => {
-    fetch('http://localhost:3000/data/productDetailData.json', {
+    fetch(`http://localhost:10010/product${location.search}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setProductDetails(data);
+        console.log(data.data.category);
       });
-  }, []);
+  }, [location]);
 
-  const productId = 1;
-  const { colorImage, stockBySize } = productDetails.data[0];
+  // const productId = 1;
+  // const { colorImage, stockBySize } = productDetails.data[0];
 
-  const accessImageData = () => {
-    const colorImageById = colorImage.filter(v => v.id === productId)[0];
-    return colorImageById.images;
-  };
+  // const accessImageData = () => {
+  //   const colorImageById = colorImage.filter(v => v.id === productId)[0];
+  //   return colorImageById.images;
+  // };
 
-  const colorImageData = accessImageData();
-  console.log('colorImageData', colorImageData);
+  // const colorImageData = accessImageData();
+  // // console.log('colorImageData', colorImageData);
 
-  const accessStockData = () => {
-    const stockBySizeById = stockBySize.filter(v => v.id === productId)[0];
-    return stockBySizeById.sizeStock;
-  };
+  // const accessStockData = () => {
+  //   const stockBySizeById = stockBySize.filter(v => v.id === productId)[0];
+  //   return stockBySizeById.sizeStock;
+  // };
 
-  const stockBySizeData = accessStockData();
-  console.log('stockBySizeData', stockBySizeData);
-  // const apiData = productDetails.data[0].colorImage;
-  // console.log('apiData = ', apiData);
+  // const stockBySizeData = accessStockData();
+  // console.log('stockBySizeData', stockBySizeData);
 
-  // const colorImageArr = Object.fromEntries(
-  //   Object.entries(apiData).filter(id => (id = 1))
-  // );
-  // console.log(colorImageArr);
-  // Object.fromEntries(Object.entries(obj).filter(([key]) => key.includes('Name')));
-
-  // console.log(Object.entries(apiData).filter(id => (Object.key = 1)));
   // key={productDetails.datas.data.productId}
   // id={productDetails.data.productName}
   // price={productDetails.data.price}
@@ -64,42 +59,91 @@ function Product() {
   // productSubImage={productDetails.data.colorImage[0].images[1]}
   // colorImage={productDetails.data.colorImage[1].images[0]}
   // productSize={productDetails.data.stockBySize.sizeStock}
+  const images = [
+    {
+      id: 1,
+      url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black1_1080x.jpg?v=1646387533',
+    },
+    {
+      id: 2,
+      url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black5_1080x.jpg?v=1646387533',
+    },
+  ];
+
+  const [sliderNum, setSliderNum] = useState(1);
+
+  const goToPrevImage = () => {
+    if (sliderNum === 1) {
+      setSliderNum(images.length);
+    } else setSliderNum(sliderNum - 1);
+  };
+
+  const goToNextImage = () => {
+    if (sliderNum === images.length) {
+      setSliderNum(1);
+    } else setSliderNum(sliderNum + 1);
+  };
+
+  // const extrafunction = () => {
+  //   console.log('a');
+  //   return () => {
+  //     console.log('b');
+  //   };
+  // };
 
   return (
     <div className={css.container}>
       <div className={css.productThumbnailContainer}>
-        <div className={css.productThumbnail}>
-          <img
-            className={css.productThumbnailImage}
-            alt="sub"
-            src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black1_110x110@2x.jpg?v=1646387533"
-          />
-        </div>
-        <div className={css.productThumbnail}>
-          <img
-            className={css.productThumbnailImage}
-            alt="sub"
-            src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black5_110x110@2x.jpg?v=1646387533"
-          />
-        </div>
+        {images.map((v, i) => (
+          <div
+            className={css.productThumbnail}
+            key={v.id}
+            onClick={() => {
+              setSliderNum(i + 1);
+            }}
+          >
+            <img
+              className={css.productThumbnailImage}
+              key={v.id}
+              alt={v.id}
+              src={v.url}
+            />
+          </div>
+        ))}
       </div>
       <div className={css.productImageContainer}>
-        <div className={css.prevIcon}>
+        <div className={css.prevIcon} onClick={goToPrevImage}>
           <FontAwesomeIcon
             className={css.angleLeft}
             icon="fa-solid fa-angle-left"
           />
         </div>
-        <div className={css.productImage}>
-          <img
-            alt="main"
-            src="https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black1_1080x.jpg?v=1646387533"
-          />
+        <div className={css.sliderContainer}>
+          <div
+            className={css.sliderImage}
+            style={{
+              transform: 'translate(-' + (sliderNum - 1) * 460 + 'px, 0px)',
+            }}
+          >
+            {images.map(v => (
+              <img
+                className={css.productImage}
+                key={v.id}
+                alt={v.id}
+                src={v.url}
+              />
+            ))}
+          </div>
+          <div className={css.sliderPageContainer}>
+            <span className={css.sliderPage}>
+              {sliderNum}/{images.length}
+            </span>
+          </div>
         </div>
-        <div className={css.nextIcon}>
+        <div className={css.nextIcon} onClick={goToNextImage}>
           <FontAwesomeIcon
             className={css.angleRight}
-            /*style={}*/ icon="fa-solid fa-angle-right"
+            icon="fa-solid fa-angle-right"
           />
         </div>
       </div>
@@ -155,26 +199,30 @@ function Product() {
           <div className={css.productDescription}>Made in Bangladesh</div>
         </div>
         <div>
-          <div className={css.modal}>
-            <span className={css.modalButton}>SIZE & FIT</span>
-            <span>
-              <FontAwesomeIcon
-                className={css.modalIcon}
-                icon="fa-solid fa-arrow-up-right-from-square"
-              />
-            </span>
+          <div className={css.modalContainer}>
+            <div className={css.modal}>
+              <span className={css.modalButton}>SIZE & FIT</span>
+              <span>
+                <FontAwesomeIcon
+                  className={css.modalIcon}
+                  icon="fa-solid fa-arrow-up-right-from-square"
+                />
+              </span>
+            </div>
             <div className={css.modalDescription}>
               Model is 183cm(6') and wears size L.
             </div>
           </div>
-          <div className={css.modal}>
-            <span className={css.modalButton}>SHIPPING</span>
-            <span>
-              <FontAwesomeIcon
-                className={css.modalIcon}
-                icon="fa-solid fa-arrow-up-right-from-square"
-              />
-            </span>
+          <div className={css.modalContainer}>
+            <div className={css.modal}>
+              <span className={css.modalButton}>SHIPPING</span>
+              <span>
+                <FontAwesomeIcon
+                  className={css.modalIcon}
+                  icon="fa-solid fa-arrow-up-right-from-square"
+                />
+              </span>
+            </div>
             <div className={css.modalDescription}>
               서울 및 경기 일부 지역 당일배송 가능
             </div>
