@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import css from '../../pages/Cart/Cart.module.scss';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../store/UserStore';
 
 function Item({ item, items, setItems }) {
+  const context = useContext(UserContext);
+  const { token } = context;
+
   const minusOne = () => {
     const newItems = items.map(each => {
       if (each.id === item.id) {
@@ -16,6 +20,7 @@ function Item({ item, items, setItems }) {
       }
     });
     setItems(newItems);
+    handleUpdate('minus');
   };
 
   const plusOne = () => {
@@ -30,12 +35,44 @@ function Item({ item, items, setItems }) {
         return each;
       }
     });
+
+    handleUpdate('plus');
     setItems(newItems);
+  };
+
+  const handleUpdate = cal => {
+    fetch('http://localhost:10010/cart', {
+      method: 'PUT',
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        product_details_id: item.product_details_id,
+        quantity: item.quantity,
+        cal: cal,
+      }),
+    })
+      .then(res => res.json())
+      .then(() => {});
   };
 
   const handleDeleteClick = () => {
     const newItems = items.filter(each => each.id !== item.id);
     setItems(newItems);
+
+    fetch('http://localhost:10010/cart', {
+      method: 'DELETE',
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        product_details_id: item.product_details_id,
+      }),
+    })
+      .then(res => res.json())
+      .then(() => {});
   };
 
   const handleMinusClick = () => {
