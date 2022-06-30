@@ -7,7 +7,6 @@ function Block(props) {
   const link = '/product?id='.concat(id);
   console.log(id);
 
-
   const [mainImage, setMainImage] = useState('');
 
   useEffect(() => {
