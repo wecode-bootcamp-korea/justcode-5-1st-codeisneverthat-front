@@ -1,48 +1,13 @@
 import React, { useContext } from 'react';
 import css from './Cart.module.scss';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Items from '../../components/CartItem/Items';
 import { UserContext } from '../../store/UserStore';
 
-// const items = [
-//   {
-//     id: 1,
-//     url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/NB-TNT-Waffle-Hoodie-DARK-GREY1_1080x.jpg?v=1644397496',
-//     name: 'Good Tee',
-//     color: 'Black',
-//     size: 'OS',
-//     price: 55000,
-//   },
-//   {
-//     id: 2,
-//     url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/Indigo-Dyed-Tee-Indigo1_1080x.jpg?v=1652950879',
-//     name: 'Awesome Tee',
-//     color: 'Blue',
-//     size: 'OS',
-//     price: 15000,
-//   },
-//   {
-//     id: 3,
-//     url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/Button-Up-S-S-Polo-Ivory1_1080x.jpg?v=1649912722',
-//     name: 'Good Tee',
-//     color: 'Black',
-//     size: 'M',
-//     price: 35000,
-//   },
-//   {
-//     id: 4,
-//     url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/Rolled-Sweater-Ivory1_1080x.jpg?v=1645939604',
-//     name: 'Good Tee',
-//     color: 'Red',
-//     size: 'S',
-//     price: 50000,
-//   },
-// ];
-
 function Cart() {
   const context = useContext(UserContext);
-  const { token, setToken } = context;
+  const { token } = context;
 
   const [items, setItems] = useState([]);
   useEffect(() => {
@@ -53,10 +18,23 @@ function Cart() {
       },
     })
       .then(res => res.json())
-      .then(item => {
-        setItems(item);
+      .then(items => {
+        const cartItems = items.map(item => ({
+          ...item,
+          quantity: 1,
+          total: item.price * item.quantity,
+        }));
+        setItems(cartItems);
       });
-  }, []);
+  }, [token, setItems]);
+
+  const [subtotal, setSubtotal] = useState(0);
+  useEffect(() => {
+    const sum = items.reduce((sum, item) => {
+      return sum + item.total;
+    }, 0);
+    setSubtotal(sum);
+  }, [items]);
 
   return (
     <div className={css.container}>
@@ -69,13 +47,13 @@ function Cart() {
                 BACK
               </Link>
             </div>
-            <Items items={items} />
+            <Items items={items} setItems={setItems} />
           </div>
           <div className={css.cart_bottom}>
             <div className={css.cart_save_box}>
               <div className={css.cart_subtotal}>
                 <span className={css.cart_subtotal_text}>SUBTOTAL</span>
-                <span>￦기능구현해야함</span>
+                <span>￦{subtotal.toLocaleString()}</span>
               </div>
               <div className={css.cart_save_text}>
                 적립금은 로그인 했을 시에만 이용 가능합니다. <br />

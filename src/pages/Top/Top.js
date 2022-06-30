@@ -1,11 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import css from './Top.module.scss';
 
 import Item from './Item';
 
+import { Link } from 'react-router-dom';
+
+<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@100&display=swap');
+</style>;
+
 function Top() {
   const [items, setItems] = useState([]);
+  const [cursorX, setCursorX] = useState();
+  const [cursorY, setCursorY] = useState();
+  const [image, setImage] = useState('');
+  const current = new Date();
+
+  const [month, setMonth] = useState(current.getMonth() + 1);
+  const [year, setYear] = useState(current.getFullYear());
+
+  useEffect(() => {
+    setMonth(current.getMonth() + 1);
+    setYear(current.getFullYear());
+  }, [current]);
+
+  useEffect(() => {
+    document.addEventListener('mousemove', e => {
+      setCursorX(e.clientX);
+      setCursorY(e.clientY);
+    });
+  }, []);
 
   useEffect(() => {
     fetch('http://localhost:10010/top20', {
@@ -13,23 +39,60 @@ function Top() {
     })
       .then(res => res.json())
       .then(data => {
-        setItems(...items, data);
+        setItems(data);
       });
   }, []);
 
+  console.log(cursorX, cursorY);
+
   return (
     <div className={css.container}>
-      {items.map((item, index) => (
+      <span className={css.date}>
+        Trending items in {month} / {year}{' '}
+      </span>
+      <ul className={css.project_list}>
+        {items.map((item, index) => (
+          <Card item={item} index={index} setImage={setImage}></Card>
+        ))}
+      </ul>
+      <div
+        className={css.cursor}
+        style={{
+          left: cursorX + 5 + 'px',
+          top: cursorY + 5 + 'px',
+        }}
+      >
+        {' '}
+        <img className={css.cursorImage} src={image} />
+      </div>
+    </div>
+  );
+}
+
+export default Top;
+
+function Card(props) {
+  const { item, index, setImage } = props;
+
+  return (
+    <li
+      onMouseOver={() => {
+        setImage(item.colorImage[0].images[0].url);
+      }}
+      onMouseLeave={() => {
+        setImage(' ');
+      }}
+    >
+      <Link to="./collections">
         <Item
+          id={item.id}
           name={item.productName}
           rank={index + 1}
           type={item.category}
           image1={item.colorImage[0].images[0].url}
           image2={item.colorImage[1].images[0].url}
         />
-      ))}
-    </div>
+      </Link>
+    </li>
   );
 }
-
-export default Top;

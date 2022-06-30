@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 import Item from './Item';
 
-function Items({ items }) {
-  const location = useLocation();
-  console.log(items);
-  const [articles, setArticles] = useState([]);
-  useEffect(() => {}, [location]);
-  useEffect(() => {
-    setArticles(items);
-  }, []);
-
+function Items({ items, setItems }) {
   return (
     <>
-      {articles.map(item => (
-        <Item
-          item={item}
-          key={item.id}
-          setArticles={setArticles}
-          articles={articles}
-        />
+      {items.map(item => (
+        <Item item={item} key={item.id} setItems={setItems} items={items} />
       ))}
     </>
   );
