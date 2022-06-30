@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
 import css from './Product.module.scss';
+import SizeButton from '../../components/SizeButton/SizeButton';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -166,12 +166,15 @@ function Product() {
             })}
         </div>
         <div className={css.productSizes}>
-          {stockBySizeData?.map(v => (
-            <div className={css.sizeBox} key={v.product_detatil?.id}>
-              <label htmlFor={v.size}>{v.size}</label>
-              <input type="radio" value={v.size} name="size" />
-            </div>
-          ))}
+          {stockBySizeData?.map(v => {
+            return (
+              <SizeButton
+                key={v.product_detatil?.id}
+                id={v.product_detatil?.id}
+                size={v.size}
+              />
+            );
+          })}
         </div>
         <div className={css.addCartButtonContainer}>
           <span className={css.addCartButton}>ADD TO CART</span>
