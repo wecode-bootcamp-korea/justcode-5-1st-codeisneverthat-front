@@ -102,12 +102,7 @@ function Product() {
               setSliderNum(i + 1);
             }}
           >
-            <img
-              className={css.productThumbnailImage}
-              key={v.id}
-              alt={v.id}
-              src={v.url}
-            />
+            <img className={css.productThumbnailImage} alt={v.id} src={v.url} />
           </div>
         ))}
       </div>
@@ -157,21 +152,24 @@ function Product() {
         </div>
         <div className={css.productColors}>
           {backData?.colorImage &&
-            backData.colorImage.map(v => (
-              <div className={css.productColorImage} key={v.id}>
-                <div className={css.colorImageDetailBox} key={v.id}>
-                  <div className={css.colorImageDetail} key={v.id}>
-                    {v.color.color}
+            backData.colorImage.map(v => {
+              return (
+                <div className={css.productColorImage} key={v.id}>
+                  <div className={css.colorImageDetailBox}>
+                    <div className={css.colorImageDetail} key={v.id}>
+                      {v.color.color}
+                    </div>
                   </div>
+                  <img alt={v.color.color} src={v.images[0].url} />
                 </div>
-                <img key={v.id} alt={v.color.color} src={v.images[0].url} />
-              </div>
-            ))}
+              );
+            })}
         </div>
         <div className={css.productSizes}>
           {stockBySizeData?.map(v => (
             <div className={css.sizeBox} key={v.product_detatil?.id}>
-              {v.size}
+              <label htmlFor={v.size}>{v.size}</label>
+              <input type="radio" value={v.size} name="size" />
             </div>
           ))}
         </div>
