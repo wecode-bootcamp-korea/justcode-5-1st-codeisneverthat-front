@@ -1,7 +1,64 @@
-.container {
-    position: relative; 
-    top: 100px; 
-    overflow-x: hidden;
-    height:100%;
+// .container {
+//   position: relative;
+//   top: 100px;
+//   // overflow-x: hidden;
+//   // height: 100%;
+//   cursor: pointer;
+//   cursor: url("https://cdn.shopify.com/s/files/1/0562/4971/2815/products/T-Logo-Tee-White1_db3e76cc-cfea-4e46-8780-0d170f8c8214_1080x.jpg?v=1646992694"),auto;
 
-}
+//   min-height: 100vh;
+//   width: 100%;
+//   background-color: pink; 
+//   z-index:3;
+
+
+
+// }
+
+// .cursor {
+//   width:10px;
+//   height:10px;
+// }
+
+// body {
+//     background-color: pink;
+
+   
+//   }
+  
+  .container {
+   
+    position: relative;
+
+
+   
+  
+  }
+  
+  
+  // ul{
+  
+  // }
+  // ul li{
+  
+  // }
+  // ul li Link{
+  
+  // }
+  
+  .cursor {
+  
+    width: 20px; 
+    height: 20px;
+    background-color: blue;
+    // position: absolute; 
+    position:fixed;
+    z-index: 3;
+  }
+  
+  
+  .cursorImage{
+    width: 200px;
+    height:300px;
+  
+  }
