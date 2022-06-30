@@ -68,6 +68,7 @@ function Card(props) {
     >
       <Link to="./collections">
         <Item
+          id={item.productId}
           name={item.productName}
           rank={index + 1}
           type={item.category}
