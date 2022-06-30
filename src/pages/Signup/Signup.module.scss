@@ -5,11 +5,11 @@
   justify-content: center;
   width: 100%;
   position: relative;
-  height: calc(100vh - 126px);
-  animation: top 0.6s linear;
+  height: calc(100vh - 14rem);
+  animation: top 0.5s linear;
   @keyframes top {
     0% {
-      top: 40px;
+      top: 2rem;
     }
     100% {
       top: 0;
