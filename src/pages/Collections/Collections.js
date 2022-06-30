@@ -5,6 +5,14 @@ import css from './Collections.module.scss';
 import Block from './Block';
 
 function Collections() {
+  function goTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
+
   const [items, setItems] = useState([]);
   const location = useLocation();
   useEffect(() => {}, [location]);
@@ -16,7 +24,7 @@ function Collections() {
     })
       .then(res => res.json())
       .then(data => {
-        setItems(...items, data);
+        setItems(data);
       });
   }, [location]);
 
@@ -32,6 +40,10 @@ function Collections() {
           subimages2={item.colorImage[1].images[0].url}
         />
       ))}
+      <button onClick={goTop} className={css.goBack}>
+        {' '}
+        GO BACK TO TOP
+      </button>
     </div>
   );
 }

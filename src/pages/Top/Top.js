@@ -6,11 +6,25 @@ import Item from './Item';
 
 import { Link } from 'react-router-dom';
 
+<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@100&display=swap');
+</style>;
+
 function Top() {
   const [items, setItems] = useState([]);
   const [cursorX, setCursorX] = useState();
   const [cursorY, setCursorY] = useState();
   const [image, setImage] = useState('');
+  const current = new Date();
+
+  const [month, setMonth] = useState(current.getMonth() + 1);
+  const [year, setYear] = useState(current.getFullYear());
+
+  useEffect(() => {
+    setMonth(current.getMonth() + 1);
+    setYear(current.getFullYear());
+  }, [current]);
 
   useEffect(() => {
     document.addEventListener('mousemove', e => {
@@ -33,6 +47,9 @@ function Top() {
 
   return (
     <div className={css.container}>
+      <span className={css.date}>
+        Trending items in {month} / {year}{' '}
+      </span>
       <ul className={css.project_list}>
         {items.map((item, index) => (
           <Card item={item} index={index} setImage={setImage}></Card>
@@ -68,7 +85,7 @@ function Card(props) {
     >
       <Link to="./collections">
         <Item
-          id={item.productId}
+          id={item.id}
           name={item.productName}
           rank={index + 1}
           type={item.category}

@@ -1,4 +1,7 @@
 @media (max-width:1149px){
+    .body{
+        cursor:default;
+    }
     .block {
         background-color: white;
         height:100%;
@@ -20,6 +23,7 @@
         padding: 7px 0px;
         border-radius: 20px;  
         cursor:pointer;
+        font-family: 'Roboto', sans-serif;
     }
 
     .nameBlock{
@@ -33,6 +37,7 @@
         padding:0px; 
         text-overflow: ellipsis;
         cursor:pointer;
+        font-family: 'Roboto', sans-serif;
 
     } 
     .imageBox {
@@ -98,6 +103,7 @@
     padding: 7px 0px;
     border-radius: 20px;  
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 
     }
     .nameBlock{
@@ -110,7 +116,7 @@
         bottom:38px;
         display: inline-block;
         font-size:50px;
-        
+        font-family: 'Roboto', sans-serif;
         text-overflow: ellipsis;
 
     } 
@@ -120,6 +126,7 @@
         left:65%;
         font-size:50px;
         bottom:130px;
+        font-family: 'Roboto', sans-serif;
      
     } 
     .imageBox {
@@ -129,6 +136,7 @@
         bottom: 180px; 
     }
     .imagesBlock1 {
+        margin-right:10px;
             bottom: 155px;
             width:60px;
             height:70px;
