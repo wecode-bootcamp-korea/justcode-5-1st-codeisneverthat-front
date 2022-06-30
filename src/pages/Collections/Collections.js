@@ -23,6 +23,7 @@ function Collections() {
     <div className={css.container}>
       {items.map(item => (
         <Block
+          key={item.productId}
           id={item.productId}
           name={item.productName}
           price={item.price}
