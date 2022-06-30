@@ -59,16 +59,6 @@ function Product() {
   // productSubImage={productDetails.data.colorImage[0].images[1]}
   // colorImage={productDetails.data.colorImage[1].images[0]}
   // productSize={productDetails.data.stockBySize.sizeStock}
-  const images = [
-    {
-      id: 1,
-      url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black1_1080x.jpg?v=1646387533',
-    },
-    {
-      id: 2,
-      url: 'https://cdn.shopify.com/s/files/1/0562/4971/2815/products/DSN-Logo-Tee-Black5_1080x.jpg?v=1646387533',
-    },
-  ];
 
   const [sliderNum, setSliderNum] = useState(1);
 
