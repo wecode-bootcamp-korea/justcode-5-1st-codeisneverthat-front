@@ -17,6 +17,7 @@ function Product() {
   const [productDetails, setProductDetails] = useState({});
   const location = useLocation();
 
+
   console.log(location.search);
   useEffect(() => {
     fetch(`http://localhost:10010/product${location.search}`, {
@@ -36,6 +37,7 @@ function Product() {
   //   const colorImageById = colorImage.filter(v => v.id === productId)[0];
   //   return colorImageById.images;
   // };
+
 
   // const colorImageData = accessImageData();
   // // console.log('colorImageData', colorImageData);
