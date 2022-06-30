@@ -14,17 +14,7 @@ import {
 library.add(faAngleLeft, faAngleRight, faArrowUpRightFromSquare);
 
 function Product() {
-  const [productDetails, setProductDetails] = useState([]);
-
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/data/productDetailData.json', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setProductDetails(data);
-  //     });
-  // }, []);
+  const [productDetails, setProductDetails] = useState({});
 
   const location = useLocation();
 
@@ -36,9 +26,13 @@ function Product() {
       .then(res => res.json())
       .then(data => {
         setProductDetails(data);
+        console.log(data.data.category);
       });
   }, [location]);
-  console.log(productDetails);
+
+  console.log(productDetails.abc && productDetails.data);
+  console.log(productDetails.data?.category);
+
   // const productId = 1;
   // const { colorImage, stockBySize } = productDetails.data[0];
 
