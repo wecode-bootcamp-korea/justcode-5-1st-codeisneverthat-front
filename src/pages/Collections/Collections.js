@@ -14,6 +14,7 @@ function Collections() {
   }
 
   const [items, setItems] = useState([]);
+
   const location = useLocation();
   useEffect(() => {}, [location]);
   console.log(location.search);

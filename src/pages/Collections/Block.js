@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import css from './Block.module.scss';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +6,13 @@ function Block(props) {
   const id = props.id;
   const link = '/product?id='.concat(id);
   console.log(id);
-  const [mainImage, setMainImage] = useState(props.image);
+
+
+  const [mainImage, setMainImage] = useState('');
+
+  useEffect(() => {
+    setMainImage(props.image);
+  }, [props.image]);
 
   return (
     <div className={css.block}>
