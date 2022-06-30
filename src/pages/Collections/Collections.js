@@ -15,7 +15,7 @@ function Collections() {
     })
       .then(res => res.json())
       .then(data => {
-        setItems(...items, data);
+        setItems(data);
       });
   }, [location]);
 
@@ -23,6 +23,7 @@ function Collections() {
     <div className={css.container}>
       {items.map(item => (
         <Block
+          id={item.productId}
           name={item.productName}
           price={item.price}
           type={item.categoryId}
@@ -35,4 +36,3 @@ function Collections() {
 }
 
 export default Collections;
-
