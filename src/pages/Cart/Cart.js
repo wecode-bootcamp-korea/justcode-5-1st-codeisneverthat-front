@@ -21,7 +21,6 @@ function Cart() {
       .then(items => {
         const cartItems = items.map(item => ({
           ...item,
-          quantity: 1,
           total: item.price * item.quantity,
         }));
         setItems(cartItems);
