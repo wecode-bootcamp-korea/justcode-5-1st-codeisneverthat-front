@@ -41,8 +41,7 @@ function Collections() {
         />
       ))}
       <button onClick={goTop} className={css.goBack}>
-        {' '}
-        GO BACK TO TOP
+        <b>GO BACK TO TOP</b>
       </button>
     </div>
   );

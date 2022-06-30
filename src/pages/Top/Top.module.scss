@@ -1,30 +1,52 @@
 
-
+ @media (max-width:1149px){
   .container {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    cursor:default;
+    
+  
+    }
+    .cursor {
+     display:none;
+    }
    
-   position: relative;
-   padding-bottom: 100px;
-   padding-top: 50px;
-   cursor:default;
+    .date {
+      position:relative; 
+      left:80%;
+      color:grey;
+  
+    }
+
+ }
+
+ @media (min-width: 1150px){
+  .container {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    cursor:default;
+  
+    }
+  
+  
+    
+    .cursor {
+      width: 200px; 
+      height: 300px;
+      position:fixed;
+    }
    
-
-  }
-
-
+    .date {
+      position:relative; 
+      left:80%;
+      color:grey;
   
-  .cursor {
-  
-    width: 200px; 
-    height: 300px;
-    position:fixed;
-  }
-  
-  
-  .date {
-    position:relative; 
-    left:80%;
-    color:grey;
+    }
 
-  }
-
-  
+ }
