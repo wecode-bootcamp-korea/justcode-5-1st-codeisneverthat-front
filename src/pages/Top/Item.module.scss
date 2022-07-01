@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 @media (max-width: 1140px) {
   .body {
     cursor: default;
@@ -59,13 +61,13 @@
 
   .forHover:hover {
     .rankBlock {
-      background-color: greenyellow;
+      background-color: #0e0;
     }
     .typeBlock {
-      color: greenyellow;
+      color: #0e0;
     }
     .nameBlock {
-      color: greenyellow;
+      color: #0e0;
     }
   }
 }
@@ -140,13 +142,13 @@
   }
   .forHover:hover {
     .rankBlock {
-      background-color: greenyellow;
+      background-color: #0e0;
     }
     .typeBlock {
-      color: greenyellow;
+      color: #0e0;
     }
     .nameBlock {
-      color: greenyellow;
+      color: #0e0;
     }
   }
 }
