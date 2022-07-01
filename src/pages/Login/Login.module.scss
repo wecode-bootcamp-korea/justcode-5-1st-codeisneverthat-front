@@ -5,21 +5,23 @@
   justify-content: center;
   width: 100%;
   height: calc(100vh - 14rem);
+  padding: 0 4rem;
 
   .cont {
-    width: 600px;
-    padding-top: 60px;
+    max-width: 60rem;
+    padding-top: 6rem;
     .cnt_div {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 2rem;
       label {
-        font-size: 16px;
+        font-size: 1.6rem;
       }
       input {
         width: 100%;
         border: 1px solid #101010;
-        padding: 12px 8px;
-        margin-top: 8px;
+        padding: 1.2rem 0.8rem;
+        margin-top: 0.8rem;
+        font-size: 1.4rem;
       }
       &:first-child {
         margin-top: 0;
@@ -31,22 +33,29 @@
       color: #fff;
       border-radius: 24px;
       padding: 10px 0;
-      margin-top: 20px;
-      font-size: 16px;
+      margin-top: 2rem;
+      font-size: 1.6rem;
     }
     .text {
-      margin-top: 20px;
-      font-size: 16px;
-      line-height: 20px;
+      margin-top: 2rem;
+      font-size: 1.6rem;
+      line-height: 2rem;
     }
     .btn_goLink {
       display: block;
-      margin-top: 16px;
-      font-size: 16px;
+      margin-top: 1.6rem;
+      font-size: 1.6rem;
       text-decoration: underline;
     }
     .btn_goLink + .btn_goLink {
-      margin-top: 12px;
+      margin-top: 1.2rem;
     }
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  #login {
+    height: auto;
+    padding: 0 2rem 20rem;
   }
 }

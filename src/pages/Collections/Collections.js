@@ -31,16 +31,19 @@ function Collections() {
 
   return (
     <div className={css.container}>
-      {items.map(item => (
-        <Block
-          id={item.productId}
-          name={item.productName}
-          price={item.price}
-          type={item.categoryId}
-          image={item.colorImage[0].images[0].url}
-          subimages2={item.colorImage[1].images[0].url}
-        />
-      ))}
+      <div className={css.container_cont}>
+        {items.map(item => (
+          <Block
+            key={item.productId}
+            id={item.productId}
+            name={item.productName}
+            price={item.price}
+            type={item.categoryId}
+            image={item.colorImage[0].images[0].url}
+            subimages2={item.colorImage[1].images[0].url}
+          />
+        ))}
+      </div>
       <button onClick={goTop} className={css.goBack}>
         <b>GO BACK TO TOP</b>
       </button>

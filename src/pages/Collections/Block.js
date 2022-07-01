@@ -17,23 +17,29 @@ function Block(props) {
     <div className={css.block}>
       <Link to={link}>
         {' '}
-        <img className={css.image} src={mainImage} />
+        <img className={css.image} src={mainImage} alt="img" />
       </Link>
       <div className={css.subimages}>
-        <img
-          className={css.subimage1}
-          src={props.image}
-          onClick={() => {
-            setMainImage(props.image);
-          }}
-        ></img>
-        <img
-          className={css.subimage2}
-          src={props.subimages2}
-          onClick={() => {
-            setMainImage(props.subimages2);
-          }}
-        ></img>
+        <div>
+          <img
+            className={css.subimage1}
+            src={props.image}
+            onClick={() => {
+              setMainImage(props.image);
+            }}
+            alt="img"
+          />
+        </div>
+        <div>
+          <img
+            className={css.subimage2}
+            src={props.subimages2}
+            onClick={() => {
+              setMainImage(props.subimages2);
+            }}
+            alt="img"
+          />
+        </div>
       </div>
       <Link to={link} className={css.forSize}>
         <div className={css.name}>{props.name}</div>
