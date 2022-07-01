@@ -96,7 +96,9 @@ video {
   color: #101010;
   line-height: 1.2;
   font-weight: 400;
+  transition: font-size 0.3s ease;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -111,17 +113,21 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1.2;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -129,6 +135,7 @@ q:after {
   content: '';
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -147,10 +154,12 @@ textarea {
   padding: 0;
   border-width: 0;
 }
+
 button,
 select {
   text-transform: none;
 }
+
 button,
 [type='button'],
 [type='reset'],
@@ -159,37 +168,46 @@ button,
   background-color: transparent;
   background-image: none;
 }
+
 :-moz-focusring {
   outline: auto;
 }
+
 :-moz-ui-invalid {
   box-shadow: none;
 }
+
 a {
   color: inherit;
   text-decoration: inherit;
 }
+
 b,
 strong {
   font-weight: 500;
 }
+
 input::placeholder,
 textarea::placeholder {
   opacity: 1;
   color: #9c9c9c;
   font-size: 1.3rem;
 }
+
 input:focus,
 textarea:focus {
   outline: none;
 }
+
 button,
 [role='button'] {
   cursor: pointer;
 }
+
 :disabled {
   cursor: default;
 }
+
 img,
 svg,
 video,
@@ -200,11 +218,13 @@ embed,
 object {
   display: block;
 }
+
 [hidden] {
   display: none;
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 960px) {
+
   html,
   body,
   div,
@@ -290,7 +310,8 @@ object {
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 760px) {
+
   html,
   body,
   div,

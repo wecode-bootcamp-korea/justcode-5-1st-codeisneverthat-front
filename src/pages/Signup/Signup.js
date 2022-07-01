@@ -32,7 +32,7 @@ function Signup() {
       .then(res => {
         if (res.status === 201) {
           alert('회원가입에 성공하였습니다.');
-          navigate('/');
+          navigate('/Login');
         }
         return res.json();
       })
