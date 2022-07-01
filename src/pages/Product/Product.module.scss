@@ -35,6 +35,16 @@
   height: 62rem;
   font-size: 5rem;
   cursor: pointer;
+  margin: 1.6rem;
+}
+
+.nextIcon {
+  display: flex;
+  align-items: center;
+  height: 62rem;
+  font-size: 5rem;
+  cursor: pointer;
+  margin: 1.6rem;
 }
 
 .sliderContainer {
@@ -69,14 +79,6 @@
   height: 100%;
   float: left;
   min-width: 46rem;
-}
-
-.nextIcon {
-  display: flex;
-  align-items: center;
-  height: 62rem;
-  font-size: 5rem;
-  cursor: pointer;
 }
 
 .productInfoContainer {
