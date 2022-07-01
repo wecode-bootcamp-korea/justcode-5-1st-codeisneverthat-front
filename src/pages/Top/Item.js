@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 function Item(props) {
   const id = props.id;
   const link = '/product?id='.concat(id);
-  console.log(id);
+  // console.log(id);
 
   return (
     <Link to={link} className={css.forHover}>

@@ -7,43 +7,66 @@
 
   .images {
     width: 25%;
-    img {
+    a {
+      position: relative;
+      display: block;
       width: 100%;
+      height: 0;
+      padding-bottom: 148%;
+      overflow: hidden;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
   .maintext {
-    display: inline-block;
+    @include flexCenter;
+    position: relative;
     border: 1px solid #111;
     border-left: 0;
     border-bottom: 0;
     width: 25%;
-    height: 400px;
+    height: 0;
+    padding-bottom: 34%;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 50px;
+    font-size: 5rem;
     font-weight: 500;
-    letter-spacing: -0.01 px;
+    letter-spacing: -0.1px;
 
-    @include flexCenter;
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include flexCenter;
+      width: 100%;
+      height: 100%;
+      &:hover {
+        background-color: #111;
+        color: #fff;
+      }
+    }
     &:first-child {
       border-left: 1px solid #111;
     }
   }
-
-  .maintext:hover {
-    background-color: #111;
-    color: #fff;
-  }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 960px) {
   .image_container {
     .images {
       width: 50%;
     }
     .maintext {
-      font-size: 30px;
       width: 50%;
+      padding-bottom: 60%;
+      span {
+        font-size: 3rem;
+      }
     }
   }
 }

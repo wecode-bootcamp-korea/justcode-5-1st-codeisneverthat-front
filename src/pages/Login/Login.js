@@ -92,7 +92,6 @@ function Login() {
         <Link to="/signup" className={css.btn_goLink}>
           회원가입 하기
         </Link>
-        <button className={css.btn_goLink}>비밀번호 찾기</button>
       </form>
     </div>
   );

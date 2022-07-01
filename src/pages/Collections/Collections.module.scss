@@ -1,18 +1,35 @@
 .container {
-    position: relative; 
-    overflow-x: hidden;
-    box-sizing: border-box;  
+  .container_cont {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 5rem;
     width: 100%;
     height: 100%;
+    padding: 4rem 4rem 8rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
     cursor: default;
-    padding-bottom:200px;
-    padding-top: 100px;
+  }
 }
 
-.goBack{
-    position:relative;
-    left:45%;
-    top:50px;
-    display: inline-block;
-    border-bottom: solid 1px black;
+.goBack {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: inline-block;
+  border-bottom: solid 1px black;
+  margin-bottom: 10rem;
+
+  b {
+    font-size: 1.4rem;
   }
+}
+
+@media screen and (max-width: 960px) {
+  .container {
+    padding: 4rem 2rem 16rem;
+    row-gap: 8rem;
+  }
+}

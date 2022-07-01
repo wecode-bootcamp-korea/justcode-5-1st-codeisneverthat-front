@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import css from './Product.module.scss';
 import SizeButton from '../../components/SizeButton/SizeButton';
+import { UserContext } from '../../store/UserStore';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -14,9 +15,13 @@ import {
 library.add(faAngleLeft, faAngleRight, faArrowUpRightFromSquare);
 
 function Product() {
+  const context = useContext(UserContext);
+  const { token } = context;
+
   const [productDetails, setProductDetails] = useState({});
   const location = useLocation();
 
+  const [checkingSize, setCheckingSize] = useState(0);
   useEffect(() => {
     fetch(`http://localhost:10010/product${location.search}`, {
       method: 'GET',
@@ -24,8 +29,15 @@ function Product() {
       .then(res => res.json())
       .then(data => {
         setProductDetails(data);
+        setCheckingSize(
+          data.data.stockBySize[0].size_stock[0].product_detatil_id
+        );
       });
   }, [location]);
+
+  const handleChange = e => {
+    setCheckingSize(e.target.dataset.id);
+  };
 
   const backData = productDetails?.data;
   let colorImageData = new Array();
@@ -79,17 +91,21 @@ function Product() {
   //   };
   // };
 
-  // key={productDetails.datas.data.productId}
-  // id={productDetails.data.productName}
-  // price={productDetails.data.price}
-  // madeIn={productDetails.data.madeIn}
-  // description={productDetails.data.description}
-  // category={productDetails.data.category}
-  // color={productDetails.data.colorImage.color}
-  // productMainImage={productDetails.data.colorImage[0].images[0]}
-  // productSubImage={productDetails.data.colorImage[0].images[1]}
-  // colorImage={productDetails.data.colorImage[1].images[0]}
-  // productSize={productDetails.data.stockBySize.sizeStock}
+  const handleAddCart = () => {
+    fetch('http://localhost:10010/cart', {
+      method: 'POST',
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        product_details_id: checkingSize,
+        quantity: 1,
+      }),
+    })
+      .then(res => res.json())
+      .then(() => {});
+  };
 
   return (
     <div className={css.container}>
@@ -166,18 +182,23 @@ function Product() {
             })}
         </div>
         <div className={css.productSizes}>
-          {stockBySizeData?.map(v => {
+          {stockBySizeData?.map((v, idx) => {
             return (
               <SizeButton
-                key={v.product_detatil?.id}
-                id={v.product_detatil?.id}
+                key={v.product_detatil_id}
+                id={v.product_detatil_id}
+                product_detatil_id={v.product_detatil_id}
                 size={v.size}
+                idx={idx}
+                handleChange={handleChange}
               />
             );
           })}
         </div>
         <div className={css.addCartButtonContainer}>
-          <span className={css.addCartButton}>ADD TO CART</span>
+          <button className={css.addCartButton} onClick={handleAddCart}>
+            ADD TO CART
+          </button>
         </div>
         <div className={css.productDescriptions}>
           <div className={css.productDescription}>{backData?.description}</div>
