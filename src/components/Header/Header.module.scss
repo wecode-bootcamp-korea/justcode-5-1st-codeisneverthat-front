@@ -7,7 +7,7 @@
     position: relative;
     width: 100%;
     @include flexSpaceBetween;
-    padding: 12px 40px;
+    padding: 1.2rem 4rem;
 
     .header_left {
       display: flex;
@@ -18,9 +18,9 @@
           position: relative;
           & > .btn_link {
             display: flex;
-            font-size: 16px;
+            font-size: 1.6rem;
             font-weight: 500;
-            padding: 4px 8px;
+            padding: 0.4rem 0.8rem;
             text-transform: uppercase;
             letter-spacing: -0.4px;
 
@@ -32,11 +32,11 @@
 
           .shop_menu {
             position: absolute;
-            top: 24px;
-            left: -40px;
+            top: 2.4rem;
+            left: -4rem;
             display: none;
-            width: 266px;
-            padding: 10px 40px;
+            width: 26.6rem;
+            padding: 1rem 4rem 7rem;
             background: #fff;
             z-index: 10;
             ul li {
@@ -47,8 +47,8 @@
                 display: flex;
                 align-items: center;
                 width: 100%;
-                padding: 6px 20px;
-                font-size: 16px;
+                padding: 0.6rem 2rem;
+                font-size: 1.6rem;
                 font-weight: 400;
                 transition: all 0.4s ease-in-out;
 
@@ -58,9 +58,9 @@
                   display: inline-block;
                   width: 8px;
                   height: 8px;
-                  margin: 0 4px 0 -12px;
+                  margin: 0 4px 0 -1.2rem;
                   background: #0e0;
-                  border-radius: 3px;
+                  border-radius: 0.3rem;
                 }
               }
             }
@@ -68,8 +68,8 @@
               ul {
                 display: none;
                 position: absolute;
-                left: 94px;
-                top: 2px;
+                left: 9.4rem;
+                top: 0.2rem;
                 a:hover:before {
                   display: none;
                 }
@@ -97,7 +97,7 @@
       top: 50%;
       transform: translate(-50%, -50%);
       img {
-        width: 200px;
+        width: 20rem;
       }
     }
 
@@ -107,24 +107,24 @@
       ul {
         display: flex;
         li {
-          font-size: 16px;
+          font-size: 1.6rem;
           font-weight: 500;
           .btn_link {
             display: flex;
-            font-size: 16px;
+            font-size: 1.6rem;
             font-weight: 500;
-            padding: 4px 8px;
+            padding: 0.4rem 0.8rem;
             letter-spacing: -0.4px;
             text-transform: uppercase;
             span {
               display: inline-block;
-              width: 22px;
-              height: 22px;
+              width: 2.2rem;
+              height: 2.2rem;
               background: #111;
-              margin-left: 4px;
+              margin-left: 0.4rem;
               border-radius: 50%;
               color: #fff;
-              font-size: 16px;
+              font-size: 1.6rem;
               text-align: center;
             }
             &:hover {

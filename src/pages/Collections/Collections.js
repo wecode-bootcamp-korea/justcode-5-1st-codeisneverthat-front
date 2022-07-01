@@ -17,7 +17,7 @@ function Collections() {
 
   const location = useLocation();
   useEffect(() => {}, [location]);
-  console.log(location.search);
+  // console.log(location.search);
 
   useEffect(() => {
     fetch(`http://localhost:10010/collections${location.search}`, {

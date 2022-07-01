@@ -43,7 +43,7 @@ function Top() {
       });
   }, []);
 
-  console.log(cursorX, cursorY);
+  // console.log(cursorX, cursorY);
 
   return (
     <div className={css.container}>

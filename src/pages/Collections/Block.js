@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Block(props) {
   const id = props.id;
   const link = '/product?id='.concat(id);
-  console.log(id);
+  // console.log(id);
 
   const [mainImage, setMainImage] = useState('');
 

@@ -122,11 +122,7 @@ function Header() {
                 </div>
               </li>
               <li className={css.left_menu_li}>
-                <Link
-                  className={css.btn_link}
-                  to="#"
-                  onClick={e => e.preventDefault()}
-                >
+                <Link className={css.btn_link} to="/top">
                   TOP20
                 </Link>
               </li>
