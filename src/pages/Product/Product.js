@@ -185,7 +185,7 @@ function Product() {
           {stockBySizeData?.map((v, idx) => {
             return (
               <SizeButton
-                key={v.product_detatil?.id}
+                key={v.product_detatil_id}
                 id={v.product_detatil_id}
                 product_detatil_id={v.product_detatil_id}
                 size={v.size}

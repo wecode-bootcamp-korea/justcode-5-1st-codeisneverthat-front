@@ -52,7 +52,7 @@ function Top() {
       </span>
       <ul className={css.project_list}>
         {items.map((item, index) => (
-          <Card item={item} index={index} setImage={setImage}></Card>
+          <Card item={item} key={item.id} index={index} setImage={setImage} />
         ))}
       </ul>
       <div
@@ -63,7 +63,7 @@ function Top() {
         }}
       >
         {' '}
-        <img className={css.cursorImage} src={image} />
+        <img className={css.cursorImage} src={image} alt="img" />
       </div>
     </div>
   );
@@ -83,7 +83,7 @@ function Card(props) {
         setImage(' ');
       }}
     >
-      <Link to="./collections">
+      <div>
         <Item
           id={item.id}
           name={item.productName}
@@ -92,7 +92,7 @@ function Card(props) {
           image1={item.colorImage[0].images[0].url}
           image2={item.colorImage[1].images[0].url}
         />
-      </Link>
+      </div>
     </li>
   );
 }
