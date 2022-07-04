@@ -1,13 +1,15 @@
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  overflow: auto;
-  padding: 4.4rem 1.5rem 0 1.5rem;
+  position: absolute;
+  top: 4.6rem;
+  transform: translate(250%, 0%);
+  z-index: 100;
 
   .main_container {
-    width: 50rem;
+    border: 1px solid black;
+    width: 40rem;
+    background-color: white;
+    height: 700px;
+    padding: 30px 30px;
   }
 
   .cart_order {
@@ -25,34 +27,28 @@
     text-decoration: underline;
   }
 
+  .cart_content_container {
+    overflow: auto;
+    height: 400px;
+  }
   .cart_component {
     display: flex;
     flex-direction: row;
     padding-bottom: 2rem;
+    height: 12rem;
     justify-content: center;
-  }
 
-  .cart_image {
-    width: 15rem;
-    height: 20rem;
-    img {
-      width: 100%;
-      height: 100%;
+    .cart_image {
+      width: 10rem;
+      height: 10rem;
     }
-  }
 
-  .cart_content {
-    width: 35rem;
-    height: 20rem;
-    padding-left: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    .cart_upper {
+    .cart_content {
+      width: 25rem;
+      height: 10rem;
       display: flex;
-      justify-content: space-between;
       flex-direction: column;
+      justify-content: space-between;
 
       .cart_name_cancel {
         display: flex;
@@ -62,6 +58,7 @@
           font-size: 1.4rem;
         }
       }
+
       .product_name {
         margin-bottom: 0.4rem;
         a {
@@ -91,19 +88,19 @@
       border: 1px solid black;
       border-radius: 0.2rem;
       font-size: 1.4rem;
-    }
 
-    .cart_quantity_minus {
-      border-right: 1px solid black;
-    }
+      .cart_quantity_minus {
+        border-right: 1px solid black;
+      }
 
-    .cart_quantity_plus {
-      border-left: 1px solid black;
-    }
+      .cart_quantity_plus {
+        border-left: 1px solid black;
+      }
 
-    .cart_quantity {
-      text-align: center;
-      width: 2rem;
+      .cart_quantity {
+        text-align: center;
+        width: 2rem;
+      }
     }
 
     .cart_price {
@@ -128,10 +125,11 @@
       span {
         font-size: 1.4rem;
       }
-    }
-    .cart_subtotal_text {
-      font-weight: 900;
-      font-size: 1.6rem;
+
+      .cart_subtotal_text {
+        font-weight: 900;
+        font-size: 1.6rem;
+      }
     }
 
     .cart_save_text {
@@ -140,7 +138,6 @@
       font-size: 1.2rem;
     }
   }
-
   .cart_checkout_btn {
     padding: 1rem 0;
     display: block;
@@ -153,7 +150,7 @@
 
   .cart_coupon_notice {
     color: #999999;
-    padding: 2rem 0;
+    padding-top: 2rem;
     font-size: 1.2rem;
   }
 }
