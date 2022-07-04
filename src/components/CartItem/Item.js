@@ -90,15 +90,16 @@ function Item({ item, items, setItems }) {
         <img alt="productImage" src={item.url} />
       </div>
       <div className={css.cart_content}>
-        <div className={css.cart_name_cancel}>
-          <div className={css.product_name}>
-            <Link to="/">{item.name}</Link>
+        <div className={css.cart_upper}>
+          <div className={css.cart_name_cancel}>
+            <div className={css.product_name}>
+              <Link to="/">{item.name}</Link>
+            </div>
+            <button onClick={handleDeleteClick}>x</button>
           </div>
-          <button onClick={handleDeleteClick}>x</button>
+          <div className={css.product_color}>{item.color}</div>
+          <div className={css.product_size}>{item.size}</div>
         </div>
-        <div className={css.product_color}>{item.color}</div>
-        <div className={css.product_size}>{item.size}</div>
-
         <div className={css.cart_sub_btn}>
           <div className={css.cart_quantity_btn}>
             <button
