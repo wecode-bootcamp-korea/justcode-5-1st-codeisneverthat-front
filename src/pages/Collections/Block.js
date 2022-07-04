@@ -4,13 +4,17 @@ import { Link } from 'react-router-dom';
 
 function Block(props) {
   const id = props.id;
-  const link = '/product?id='.concat(id);
-  // console.log(id);
 
   const [mainImage, setMainImage] = useState('');
+  const [mainColor, setMainColor] = useState('');
 
+  const link = '/product?id='
+    .concat(id)
+    .concat('/product_color?id=')
+    .concat(mainColor);
   useEffect(() => {
     setMainImage(props.image);
+    setMainColor(props.colorId[0].id);
   }, [props.image]);
 
   return (
@@ -26,6 +30,7 @@ function Block(props) {
             src={props.image}
             onClick={() => {
               setMainImage(props.image);
+              setMainColor(props.colorId[0].id);
             }}
             alt="img"
           />
@@ -36,6 +41,7 @@ function Block(props) {
             src={props.subimages2}
             onClick={() => {
               setMainImage(props.subimages2);
+              setMainColor(props.colorId[1].id);
             }}
             alt="img"
           />

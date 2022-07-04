@@ -36,6 +36,7 @@ function Collections() {
           <Block
             key={item.productId}
             id={item.productId}
+            colorId={item.colorImage}
             name={item.productName}
             price={item.price}
             type={item.categoryId}
