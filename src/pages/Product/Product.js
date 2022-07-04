@@ -22,6 +22,11 @@ function Product() {
   const location = useLocation();
 
   const [checkingSize, setCheckingSize] = useState(0);
+
+  const [imageDetailModal, setImageDetailModal] = useState(false);
+  const [sizeFitModal, setSizeFitModal] = useState(false);
+  const [shippingModal, setShippingModal] = useState(false);
+
   useEffect(() => {
     fetch(`http://localhost:10010/product${location.search}`, {
       method: 'GET',
@@ -84,13 +89,6 @@ function Product() {
     } else setSliderNum(sliderNum + 1);
   };
 
-  // const extrafunction = () => {
-  //   console.log('a');
-  //   return () => {
-  //     console.log('b');
-  //   };
-  // };
-
   const handleAddCart = () => {
     fetch('http://localhost:10010/cart', {
       method: 'POST',
@@ -111,15 +109,16 @@ function Product() {
     <div className={css.container}>
       <div className={css.productThumbnailContainer}>
         {colorImageData.map((v, i) => (
-          <div
-            className={css.productThumbnail}
+          <img
+            className={css.productThumbnailImage}
             key={v.id}
+            alt={v.id}
+            src={v.url}
             onClick={() => {
               setSliderNum(i + 1);
             }}
-          >
-            <img className={css.productThumbnailImage} alt={v.id} src={v.url} />
-          </div>
+            style={i + 1 === sliderNum ? { opacity: 1 } : { opacity: 0.5 }}
+          />
         ))}
       </div>
       <div className={css.productImageContainer}>
@@ -164,7 +163,9 @@ function Product() {
           <span className={css.productColor}>{colorData.color}</span>
         </h1>
         <div>
-          <span className={css.productPrice}>{backData?.price}</span>
+          <span className={css.productPrice}>
+            ￦{backData?.price.toLocaleString()}
+          </span>
         </div>
         <div className={css.productColors}>
           {backData?.colorImage &&
