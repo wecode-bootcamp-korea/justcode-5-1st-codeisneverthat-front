@@ -1,8 +1,19 @@
 .container {
   position: absolute;
   top: 4.6rem;
-  transform: translate(250%, 0%);
+  right: 4.4rem;
   z-index: 100;
+  animation: menuOffBounce 1s ease;
+
+  @keyframes menuOffBounce {
+    0% {
+      right: -30%
+    }
+
+    100% {
+      right: 4.4rem;
+    }
+  }
 
   .main_container {
     border: 1px solid black;
@@ -16,6 +27,7 @@
     margin-bottom: 2rem;
     display: flex;
     justify-content: space-between;
+
     span,
     button,
     a {
@@ -31,6 +43,7 @@
     overflow: auto;
     height: 400px;
   }
+
   .cart_component {
     display: flex;
     flex-direction: row;
@@ -61,6 +74,7 @@
 
       .product_name {
         margin-bottom: 0.4rem;
+
         a {
           font-size: 1.4rem;
         }
@@ -106,6 +120,7 @@
     .cart_price {
       display: flex;
       align-items: center;
+
       span {
         font-size: 1.4rem;
       }
@@ -122,6 +137,7 @@
     .cart_subtotal {
       display: flex;
       justify-content: space-between;
+
       span {
         font-size: 1.4rem;
       }
@@ -138,6 +154,7 @@
       font-size: 1.2rem;
     }
   }
+
   .cart_checkout_btn {
     padding: 1rem 0;
     display: block;

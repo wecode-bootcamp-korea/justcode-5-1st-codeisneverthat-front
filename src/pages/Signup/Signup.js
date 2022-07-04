@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import css from './Signup.module.scss';
 
@@ -28,15 +28,13 @@ function Signup() {
         email: inputs.email,
         password: inputs.password,
       }),
-    })
-      .then(res => {
-        if (res.status === 201) {
-          alert('회원가입에 성공하였습니다.');
-          navigate('/Login');
-        }
-        return res.json();
-      })
-      .then(result => console.log(result));
+    }).then(res => {
+      if (res.status === 201) {
+        alert('회원가입에 성공하였습니다.');
+        navigate('/Login');
+      }
+      return res.json();
+    });
   };
 
   return (

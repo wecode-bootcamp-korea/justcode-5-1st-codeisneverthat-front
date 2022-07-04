@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
@@ -10,6 +10,32 @@ import css from './Header.module.scss';
 function Header() {
   const context = useContext(UserContext);
   const { token, setToken } = context;
+
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:10010/cart', {
+      method: 'GET',
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then(res => res.json())
+      .then(items => {
+        const cartItems = items.map(item => ({
+          ...item,
+          cartquantity: item.quantity,
+        }));
+        setItems(cartItems);
+      });
+  }, [token, setItems]);
+
+  const [subtotal, setSubtotal] = useState(0);
+  useEffect(() => {
+    const sum = items.reduce((sum, item) => {
+      return sum + item.cartquantity;
+    }, 0);
+    setSubtotal(sum);
+  }, [items]);
 
   const [isShowing, setIsShowing] = useState(false);
   const openModal = () => {
@@ -27,11 +53,12 @@ function Header() {
     alert('로그아웃 되었습니다.');
   };
 
-  const [navbarOpen, setNavbarOpen] = useState(false);
+  const [navbarOpen, setNavbarOpen] = useState(true);
 
   const handlenMenuToggle = () => {
     setNavbarOpen(prev => !prev);
   };
+
   return (
     <>
       <header id={css['header']}>
@@ -200,7 +227,7 @@ function Header() {
               <li>
                 <button className={css.btn_link} onClick={openCartModal}>
                   CART
-                  <span>0</span>
+                  <span>{subtotal}</span>
                 </button>
               </li>
             </ul>
