@@ -4,6 +4,10 @@ import { useLocation } from 'react-router-dom';
 import css from './Product.module.scss';
 import SizeButton from '../../components/SizeButton/SizeButton';
 import { UserContext } from '../../store/UserStore';
+// import ModalLayout from '../../modal';
+// import ImageDetail from '../../components/Product/modal/ImageDetail';
+// import SizeFit from '../../components/Product/modal/SizeFit';
+// import Shipping from '../../components/Product/modal/Shipping';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -22,6 +26,36 @@ function Product() {
   const location = useLocation();
 
   const [checkingSize, setCheckingSize] = useState(0);
+
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [imageDetailModal, setImageDetailModal] = useState(false);
+  // const [sizeFitModal, setSizeFitModal] = useState(false);
+  // const [shippingModal, setShippingModal] = useState(false);
+
+  // const openImageDetailModal = () => {
+  //   setImageDetailModal(true);
+  // };
+
+  // const closeImageDetailModal = () => {
+  //   setImageDetailModal(false);
+  // };
+
+  // const openSizeFitModal = () => {
+  //   setSizeFitModal(true);
+  // };
+
+  // const closeSizeFitModal = () => {
+  //   setSizeFitModal(false);
+  // };
+
+  // const openShippingModal = () => {
+  //   setShippingModal(true);
+  // };
+
+  // const closeShippingModal = () => {
+  //   setShippingModal(false);
+  // };
+
   useEffect(() => {
     fetch(`http://localhost:10010/product${location.search}`, {
       method: 'GET',
@@ -111,15 +145,16 @@ function Product() {
     <div className={css.container}>
       <div className={css.productThumbnailContainer}>
         {colorImageData.map((v, i) => (
-          <div
-            className={css.productThumbnail}
+          <img
+            className={css.productThumbnailImage}
             key={v.id}
+            alt={v.id}
+            src={v.url}
             onClick={() => {
               setSliderNum(i + 1);
             }}
-          >
-            <img className={css.productThumbnailImage} alt={v.id} src={v.url} />
-          </div>
+            style={i + 1 === sliderNum ? { opacity: 1 } : { opacity: 0.5 }}
+          />
         ))}
       </div>
       <div className={css.productImageContainer}>
@@ -164,7 +199,9 @@ function Product() {
           <span className={css.productColor}>{colorData.color}</span>
         </h1>
         <div>
-          <span className={css.productPrice}>{backData?.price}</span>
+          <span className={css.productPrice}>
+            ￦{backData?.price.toLocaleString()}
+          </span>
         </div>
         <div className={css.productColors}>
           {backData?.colorImage &&
@@ -208,7 +245,7 @@ function Product() {
         </div>
         <div>
           <div className={css.modalContainer}>
-            <div className={css.modal}>
+            <div className={css.modal} /*onClick={openModal}*/>
               <span className={css.modalButton}>SIZE & FIT</span>
               <span>
                 <FontAwesomeIcon
@@ -222,7 +259,7 @@ function Product() {
             </div>
           </div>
           <div className={css.modalContainer}>
-            <div className={css.modal}>
+            <div className={css.modal} /*onClick={openModal}*/>
               <span className={css.modalButton}>SHIPPING</span>
               <span>
                 <FontAwesomeIcon
@@ -237,6 +274,21 @@ function Product() {
           </div>
         </div>
       </div>
+      {/* {imageDetailModal && (
+        <modalLayout openModal={openModal}>
+          <ImageDetail openModal={openModal} />
+        </modalLayout>
+      )}
+      {sizeFitModal && (
+        <ModalLayout openModal={openModal}>
+          <SizeFit openModal={openModal} />
+        </ModalLayout>
+      )}
+      {shippingModal && (
+        <ModalLayout openModal={openModal}>
+          <Shipping openModal={openModal} />
+        </ModalLayout>
+      )} */}
     </div>
   );
 }
