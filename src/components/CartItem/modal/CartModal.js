@@ -90,41 +90,36 @@ function Item({ item, items, setItems }) {
         <img alt="productImage" src={item.url} />
       </div>
       <div className={css.cart_content}>
-        <div className={css.cart_sub_top}>
-          <div className={css.cart_name_cancel}>
-            <div className={css.product_name}>
-              <Link to="/">{item.name}</Link>
-            </div>
-            <button className={css.cart_cancel} onClick={handleDeleteClick}>
-              x
+        <div className={css.cart_name_cancel}>
+          <div className={css.product_name}>
+            <Link to="/">{item.name}</Link>
+          </div>
+          <button onClick={handleDeleteClick}>x</button>
+        </div>
+        <div className={css.product_color}>{item.color}</div>
+        <div className={css.product_size}>{item.size}</div>
+
+        <div className={css.cart_sub_btn}>
+          <div className={css.cart_quantity_btn}>
+            <button
+              className={css.cart_quantity_minus}
+              onClick={handleMinusClick}
+            >
+              &nbsp; -&nbsp;&nbsp;
+            </button>
+            <input
+              className={css.cart_quantity}
+              type="text"
+              value={item.quantity}
+              readOnly
+              min="1"
+            />
+            <button className={css.cart_quantity_plus} onClick={plusOne}>
+              &nbsp; +&nbsp;&nbsp;
             </button>
           </div>
-          <div className={css.product_color}>{item.color}</div>
-          <div className={css.product_size}>{item.size}</div>
-        </div>
-        <div className={css.cart_sub_bottom}>
-          <div className={css.cart_sub_btn}>
-            <div className={css.cart_quantity_btn}>
-              <button
-                className={css.cart_quantity_minus}
-                onClick={handleMinusClick}
-              >
-                &nbsp; -&nbsp;&nbsp;
-              </button>
-              <input
-                className={css.cart_quantity}
-                type="text"
-                value={item.quantity}
-                readOnly
-                min="1"
-              />
-              <button className={css.cart_quantity_plus} onClick={plusOne}>
-                &nbsp; +&nbsp;&nbsp;
-              </button>
-            </div>
-            <div className={css.cart_price}>
-              <span>￦{item.total.toLocaleString()}</span>
-            </div>
+          <div className={css.cart_price}>
+            <span>￦{item.total.toLocaleString()}</span>
           </div>
         </div>
       </div>
@@ -133,7 +128,6 @@ function Item({ item, items, setItems }) {
 }
 
 function Items({ items, setItems }) {
-  console.log(items);
   return (
     <>
       {items.map(item => (
@@ -177,13 +171,13 @@ const CartModal = ({ openCartModal }) => {
     <div className={css.container}>
       <div className={css.main}>
         <div className={css.main_container}>
-          <div className={css.cart_top}>
-            <div className={css.cart_order}>
-              <span> ORDER SUMMARY </span>
-              <button onClick={openCartModal} className={css.cart_back}>
-                CLOSE
-              </button>
-            </div>
+          <div className={css.cart_order}>
+            <span> ORDER SUMMARY </span>
+            <button onClick={openCartModal} className={css.cart_back}>
+              CLOSE
+            </button>
+          </div>
+          <div className={css.cart_content_container}>
             <Items items={items} setItems={setItems} />
           </div>
           <div className={css.cart_bottom}>

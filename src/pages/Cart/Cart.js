@@ -39,15 +39,14 @@ function Cart() {
     <div className={css.container}>
       <div className={css.main}>
         <div className={css.main_container}>
-          <div className={css.cart_top}>
-            <div className={css.cart_order}>
-              <span> ORDER SUMMARY </span>
-              <Link to="/" className={css.cart_back}>
-                CLOSE
-              </Link>
-            </div>
-            <Items items={items} setItems={setItems} />
+          <div className={css.cart_order}>
+            <span> ORDER SUMMARY </span>
+            <Link to="/" className={css.cart_back}>
+              CLOSE
+            </Link>
           </div>
+          <Items items={items} setItems={setItems} />
+
           <div className={css.cart_bottom}>
             <div className={css.cart_save_box}>
               <div className={css.cart_subtotal}>
