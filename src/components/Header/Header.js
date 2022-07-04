@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
+import CartModal from '../CartItem/modal/CartModal';
 import { UserContext } from '../../store/UserStore';
 
 import css from './Header.module.scss';
@@ -14,6 +15,12 @@ function Header() {
   const openModal = () => {
     setIsShowing(!isShowing);
   };
+
+  const [cartModal, setCartModal] = useState(false);
+  const openCartModal = () => {
+    setCartModal(!cartModal);
+  };
+
   const handleLogoutToken = () => {
     localStorage.removeItem('token');
     setToken('');
@@ -191,10 +198,10 @@ function Header() {
                 )}
               </li>
               <li>
-                <Link className={css.btn_link} to="/cart">
+                <button className={css.btn_link} onClick={openCartModal}>
                   CART
                   <span>0</span>
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -203,6 +210,12 @@ function Header() {
       {isShowing && (
         <ModalLayout openModal={openModal}>
           <Search openModal={openModal} />
+        </ModalLayout>
+      )}
+
+      {cartModal && (
+        <ModalLayout openCartModal={openCartModal}>
+          <CartModal openCartModal={openCartModal} />
         </ModalLayout>
       )}
     </>

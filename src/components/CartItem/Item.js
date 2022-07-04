@@ -87,7 +87,7 @@ function Item({ item, items, setItems }) {
   return (
     <div className={css.cart_component}>
       <div className={css.cart_image}>
-        <img src={item.url}></img>
+        <img alt="productImage" src={item.url} />
       </div>
       <div className={css.cart_content}>
         <div className={css.cart_sub_top}>

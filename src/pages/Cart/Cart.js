@@ -43,7 +43,7 @@ function Cart() {
             <div className={css.cart_order}>
               <span> ORDER SUMMARY </span>
               <Link to="/" className={css.cart_back}>
-                BACK
+                CLOSE
               </Link>
             </div>
             <Items items={items} setItems={setItems} />
