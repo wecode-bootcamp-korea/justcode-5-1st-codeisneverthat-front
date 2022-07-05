@@ -65,7 +65,7 @@ function Product() {
       .then(data => {
         setProductDetails(data);
         setCheckingSize(
-          data.data.stockBySize[0].size_stock[0].product_detatil_id
+          data.data.stockBySize[0].size_stock[0].product_details_id
         );
       });
   }, [location]);
@@ -216,9 +216,9 @@ function Product() {
           {stockBySizeData?.map((v, idx) => {
             return (
               <SizeButton
-                key={v.product_detatil_id}
-                id={v.product_detatil_id}
-                product_detatil_id={v.product_detatil_id}
+                key={v.product_details_id}
+                id={v.product_details_id}
+                product_details_id={v.product_details_id}
                 size={v.size}
                 idx={idx}
                 handleChange={handleChange}
