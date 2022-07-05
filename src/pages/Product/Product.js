@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import css from './Product.module.scss';
 import SizeButton from '../../components/SizeButton/SizeButton';
 import { UserContext } from '../../store/UserStore';
-import BASE_URL from '/src/config';
+import BASE_URL from '../../config';
 // import ModalLayout from '../../modal';
 // import ImageDetail from '../../components/Product/modal/ImageDetail';
 // import SizeFit from '../../components/Product/modal/SizeFit';

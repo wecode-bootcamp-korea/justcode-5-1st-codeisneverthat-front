@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import css from './Login.module.scss';
 import { UserContext } from '../../store/UserStore';
-import BASE_URL from '/src/config';
+import BASE_URL from '../../config';
 
 function Login() {
   const context = useContext(UserContext);

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Items from '../../components/CartItem/Items';
 import { UserContext } from '../../store/UserStore';
-import BASE_URL from '/src/config';
+import BASE_URL from '../../config';
 
 function Cart() {
   const context = useContext(UserContext);
