@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Items from '../../components/CartItem/Items';
 import { UserContext } from '../../store/UserStore';
+import BASE_URL from '/src/config';
 
 function Cart() {
   const context = useContext(UserContext);
@@ -11,7 +12,7 @@ function Cart() {
 
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:10010/cart', {
+    fetch(`${BASE_URL}/cart`, {
       method: 'GET',
       headers: {
         Authorization: token,

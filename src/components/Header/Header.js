@@ -5,6 +5,7 @@ import Search from './modal/Search';
 import CartModal from '../CartItem/modal/CartModal';
 import { UserContext } from '../../store/UserStore';
 import { throttle } from 'lodash';
+import BASE_URL from '/src/config';
 
 import css from './Header.module.scss';
 
@@ -14,7 +15,7 @@ function Header() {
 
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:10010/cart', {
+    fetch(`${BASE_URL}/cart`, {
       method: 'GET',
       headers: {
         Authorization: token,

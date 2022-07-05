@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import css from './Top.module.scss';
-
 import Item from './Item';
-
-import { Link } from 'react-router-dom';
+import BASE_URL from '/src/config';
 
 <style>
   @import
@@ -34,7 +31,7 @@ function Top() {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:10010/top20', {
+    fetch(`${BASE_URL}/top20`, {
       method: 'GET',
     })
       .then(res => res.json())
