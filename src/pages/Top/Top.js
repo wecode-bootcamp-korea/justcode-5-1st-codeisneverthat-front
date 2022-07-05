@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import css from './Top.module.scss';
 import Item from './Item';
-import BASE_URL from '/src/config';
+import BASE_URL from '../../config';
 
 <style>
   @import

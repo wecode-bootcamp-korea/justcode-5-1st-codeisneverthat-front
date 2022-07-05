@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import css from '../../pages/Cart/Cart.module.scss';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../store/UserStore';
-import BASE_URL from '/src/config';
+import BASE_URL from '../../config';
 
 function Item({ item, items, setItems }) {
   const context = useContext(UserContext);

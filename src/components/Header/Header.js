@@ -5,7 +5,7 @@ import Search from './modal/Search';
 import CartModal from '../CartItem/modal/CartModal';
 import { UserContext } from '../../store/UserStore';
 import { throttle } from 'lodash';
-import BASE_URL from '/src/config';
+import BASE_URL from '../../config';
 
 import css from './Header.module.scss';
 
