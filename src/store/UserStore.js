@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-export const UserContext = createContext();
+export const UserContext = createContext(null);
 
 function UserStore(props) {
   // props로 지정하고 싶은 상태를 만들어준다.

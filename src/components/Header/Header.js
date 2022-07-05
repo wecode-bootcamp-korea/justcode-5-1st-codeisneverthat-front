@@ -1,9 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
 import CartModal from '../CartItem/modal/CartModal';
 import { UserContext } from '../../store/UserStore';
+import { throttle } from 'lodash';
 
 import css from './Header.module.scss';
 
@@ -54,10 +55,25 @@ function Header() {
   };
 
   const [navbarOpen, setNavbarOpen] = useState(true);
-
   const handlenMenuToggle = () => {
     setNavbarOpen(prev => !prev);
   };
+
+  const throttledScroll = useMemo(
+    () =>
+      throttle(() => {
+        const nextTabnavOn = window.scrollY > window.scrollY + 100;
+        if (nextTabnavOn !== cartModal) setCartModal(nextTabnavOn);
+        if (nextTabnavOn !== isShowing) setIsShowing(nextTabnavOn);
+      }, 300),
+    [cartModal, isShowing]
+  );
+  useEffect(() => {
+    window.addEventListener('scroll', throttledScroll);
+    return () => {
+      window.removeEventListener('scroll', throttledScroll); //clean up
+    };
+  }, [throttledScroll]);
 
   return (
     <>

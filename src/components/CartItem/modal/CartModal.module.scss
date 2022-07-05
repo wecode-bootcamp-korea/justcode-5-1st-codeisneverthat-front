@@ -3,15 +3,16 @@
   top: 4.6rem;
   right: 4.4rem;
   z-index: 100;
-  animation: menuOffBounce 1s ease;
+  animation: menuOffBounce 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
 
   @keyframes menuOffBounce {
     0% {
-      right: -30%
+      transform: translateX(100%);
     }
 
     100% {
-      right: 4.4rem;
+      transform: translateX(0);
     }
   }
 
