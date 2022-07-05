@@ -43,8 +43,6 @@ function Top() {
       });
   }, []);
 
-  // console.log(cursorX, cursorY);
-
   return (
     <div className={css.container}>
       <span className={css.date}>
@@ -80,7 +78,7 @@ function Card(props) {
         setImage(item.colorImage[0].images[0].url);
       }}
       onMouseLeave={() => {
-        setImage(' ');
+        setImage('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs');
       }}
     >
       <div>

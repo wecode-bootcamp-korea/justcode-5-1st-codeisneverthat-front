@@ -66,6 +66,9 @@
   text-align: center;
   font-size: 2rem;
 }
+.price2{
+  display:none; 
+}
 
 @media (max-width: 1140px) {
   .block {
@@ -88,4 +91,8 @@
   .price {
     padding-top: 2rem;
   }
+  .price2{
+    display:none; 
+  }
+  
 }

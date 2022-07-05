@@ -7,6 +7,26 @@ function Block(props) {
 
   const [mainImage, setMainImage] = useState('');
   const [mainColor, setMainColor] = useState('');
+  const [priceStyle, setPriceStyle] = useState(css.price);
+  const [soldOutStyle, setSoldOutStyle] = useState(css.price2);
+
+  let zeroCounter = 0;
+  let totalProducts = 0;
+  const stockArray = props.stock;
+
+  for (var i = 0; i < stockArray.length; i++) {
+    for (var j = 0; j < stockArray[i].size_stock.length; j++) {
+      if (stockArray[i].size_stock[j].stock === 0) {
+        zeroCounter++;
+      }
+      totalProducts++;
+    }
+  }
+
+  if (totalProducts === zeroCounter) {
+    setPriceStyle(css.price2);
+    setSoldOutStyle(css.price);
+  }
 
   const link = '/product?id='
     .concat(id)
@@ -49,7 +69,8 @@ function Block(props) {
       </div>
       <Link to={link} className={css.forSize}>
         <div className={css.name}>{props.name}</div>
-        <div className={css.price}>₩ {props.price}</div>
+        <div className={priceStyle}>₩ {props.price}</div>
+        <div className={soldOutStyle}> SOLD OUT</div>
       </Link>
     </div>
   );

@@ -13,6 +13,13 @@
     cursor: default;
   }
 }
+.categoryButton{
+  position:relative;
+  left:3%;
+  width: 3.5%;
+  height: 3.3rem;
+  background-color:#0e0; ;
+}
 
 .goBack {
   position: relative;
@@ -25,11 +32,16 @@
   b {
     font-size: 1.4rem;
   }
+  
 }
 
 @media screen and (max-width: 960px) {
   .container {
     padding: 4rem 2rem 16rem;
     row-gap: 8rem;
+  }
+  .categoryButton{
+    position:relative;
+    
   }
 }

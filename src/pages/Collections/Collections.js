@@ -31,9 +31,13 @@ function Collections() {
 
   return (
     <div className={css.container}>
+      <div className={css.categoryButton}>
+        <button>{location.search.split('=').pop()}</button>
+      </div>
       <div className={css.container_cont}>
         {items.map(item => (
           <Block
+            stock={item.stockBySize}
             key={item.productId}
             id={item.productId}
             colorId={item.colorImage}
@@ -41,7 +45,6 @@ function Collections() {
             price={item.price}
             type={item.categoryId}
             image={item.colorImage[0].images[0].url}
-            subimages2={item.colorImage[1].images[0].url}
           />
         ))}
       </div>
