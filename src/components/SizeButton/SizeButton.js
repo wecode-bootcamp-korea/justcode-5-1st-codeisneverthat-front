@@ -8,7 +8,7 @@ function SizeButton(props) {
         type="radio"
         value={props.size}
         id={props.size}
-        data-id={props.product_detatil_id}
+        data-id={props.product_details_id}
         name="size"
         defaultChecked={props.idx == 0 ? true : false}
         onChange={props.handleChange}
