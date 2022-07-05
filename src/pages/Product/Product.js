@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import css from './Product.module.scss';
 import SizeButton from '../../components/SizeButton/SizeButton';
 import { UserContext } from '../../store/UserStore';
+import BASE_URL from '/src/config';
 // import ModalLayout from '../../modal';
 // import ImageDetail from '../../components/Product/modal/ImageDetail';
 // import SizeFit from '../../components/Product/modal/SizeFit';
@@ -57,7 +58,7 @@ function Product() {
   // };
 
   useEffect(() => {
-    fetch(`http://localhost:10010/product${location.search}`, {
+    fetch(`${BASE_URL}/product${location.search}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -118,15 +119,8 @@ function Product() {
     } else setSliderNum(sliderNum + 1);
   };
 
-  // const extrafunction = () => {
-  //   console.log('a');
-  //   return () => {
-  //     console.log('b');
-  //   };
-  // };
-
   const handleAddCart = () => {
-    fetch('http://localhost:10010/cart', {
+    fetch(`${BASE_URL}/cart`, {
       method: 'POST',
       headers: {
         Authorization: token,

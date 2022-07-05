@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import css from './Signup.module.scss';
+import BASE_URL from '/src/config';
 
 function Signup() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function Signup() {
 
   const handleSignUp = event => {
     event.preventDefault();
-    fetch('http://localhost:10010/signup', {
+    fetch(`${BASE_URL}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
