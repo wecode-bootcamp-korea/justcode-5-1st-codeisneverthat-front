@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import css from './Login.module.scss';
 import { UserContext } from '../../store/UserStore';
+import BASE_URL from '/src/config';
 
 function Login() {
   const context = useContext(UserContext);
@@ -22,7 +23,7 @@ function Login() {
 
   const handleLogin = event => {
     event.preventDefault();
-    fetch('http://localhost:10010/login', {
+    fetch(`${BASE_URL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

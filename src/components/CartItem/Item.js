@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import css from '../../pages/Cart/Cart.module.scss';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../store/UserStore';
+import BASE_URL from '/src/config';
 
 function Item({ item, items, setItems }) {
   const context = useContext(UserContext);
@@ -41,7 +42,7 @@ function Item({ item, items, setItems }) {
   };
 
   const handleUpdate = cal => {
-    fetch('http://localhost:10010/cart', {
+    fetch(`${BASE_URL}/cart`, {
       method: 'PUT',
       headers: {
         Authorization: token,
@@ -61,7 +62,7 @@ function Item({ item, items, setItems }) {
     const newItems = items.filter(each => each.id !== item.id);
     setItems(newItems);
 
-    fetch('http://localhost:10010/cart', {
+    fetch(`${BASE_URL}/cart`, {
       method: 'DELETE',
       headers: {
         Authorization: token,

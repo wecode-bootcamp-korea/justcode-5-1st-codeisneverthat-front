@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import BASE_URL from '../../config';
 
 import css from './Collections.module.scss';
 import Block from './Block';
@@ -20,7 +21,7 @@ function Collections() {
   // console.log(location.search);
 
   useEffect(() => {
-    fetch(`http://localhost:10010/collections${location.search}`, {
+    fetch(`${BASE_URL}/collections${location.search}`, {
       method: 'GET',
     })
       .then(res => res.json())
