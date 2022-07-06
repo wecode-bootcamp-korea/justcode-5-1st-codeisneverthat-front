@@ -55,26 +55,25 @@ function Header() {
     alert('로그아웃 되었습니다.');
   };
 
-  const [navbarOpen, setNavbarOpen] = useState(true);
+  const [mobileToggleMenu, setMobileToggleMenu] = useState(true);
   const handlenMenuToggle = () => {
-    setNavbarOpen(prev => !prev);
+    setMobileToggleMenu(prev => !prev);
   };
 
-  const throttledScroll = useMemo(
-    () =>
-      throttle(() => {
-        const nextTabnavOn = window.scrollY > window.scrollY + 100;
-        if (nextTabnavOn !== cartModal) setCartModal(nextTabnavOn);
-        if (nextTabnavOn !== isShowing) setIsShowing(nextTabnavOn);
-      }, 300),
-    [cartModal, isShowing]
-  );
   useEffect(() => {
-    window.addEventListener('scroll', throttledScroll);
-    return () => {
-      window.removeEventListener('scroll', throttledScroll); //clean up
+    const throttleScroll = () => {
+      throttle(() => {
+        const scrollingFalse = window.scrollY > window.scrollY + 10;
+        if (scrollingFalse !== cartModal) setCartModal(scrollingFalse);
+        if (scrollingFalse !== isShowing) setIsShowing(scrollingFalse);
+      }, 300);
     };
-  }, [throttledScroll]);
+
+    window.addEventListener('scroll', throttleScroll());
+    return () => {
+      window.removeEventListener('scroll', throttleScroll()); //clean up
+    };
+  }, [cartModal, isShowing]);
 
   return (
     <>
@@ -82,9 +81,9 @@ function Header() {
         <div className={css.cont}>
           <div
             className={
-              navbarOpen
+              mobileToggleMenu
                 ? `${css.header_left}`
-                : `${css.header_left} ${css.menuOn}`
+                : `${css.header_left} ${css.menuhandlenMenuToggleOn}`
             }
           >
             {/* <div className={css.header_left}> */}
@@ -104,7 +103,9 @@ function Header() {
                   <div className={css.shop_menu}>
                     <ul>
                       <li>
-                        <Link to="/collections">All</Link>
+                        <Link to="/collections" onClick={handlenMenuToggle}>
+                          All
+                        </Link>
                       </li>
                       <li>
                         <Link to="/collections?category=Tees">Tees</Link>
