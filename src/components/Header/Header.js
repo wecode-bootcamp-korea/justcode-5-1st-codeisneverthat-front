@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
-import CartModal from '../CartItem/modal/CartModal';
+import CartModal from './modal/CartModal/CartModal';
 import { UserContext } from '../../store/UserStore';
 import { throttle } from 'lodash';
 import BASE_URL from '../../config';

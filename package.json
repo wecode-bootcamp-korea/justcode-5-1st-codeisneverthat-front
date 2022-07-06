@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "distribute": "npm i && npm run build && pm2 serve build 3000 --name <codeisneverthat-front> --spa"
+    "distribute": "npm i && npm run build && pm2 serve build 3000 --name codeisneverthat-front --spa"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",

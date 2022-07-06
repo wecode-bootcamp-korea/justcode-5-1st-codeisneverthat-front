@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
-import css from './Cart.module.scss';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Items from '../../components/CartItem/Items';
+import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../store/UserStore';
+import { Link } from 'react-router-dom';
+import Items from './Items';
 import BASE_URL from '../../config';
+import css from './Cart.module.scss';
 
 function Cart() {
   const context = useContext(UserContext);
@@ -43,7 +42,7 @@ function Cart() {
           <div className={css.cart_order}>
             <span> ORDER SUMMARY </span>
             <Link to="/" className={css.cart_back}>
-              CLOSE
+              BACK
             </Link>
           </div>
           <Items items={items} setItems={setItems} />

@@ -1,8 +1,8 @@
-import css from './CartModal.module.scss';
 import { useState, useEffect, useContext } from 'react';
-import { UserContext } from '../../../store/UserStore';
+import { UserContext } from '../../../../store/UserStore';
 import { Link } from 'react-router-dom';
-import BASE_URL from '../../../config';
+import BASE_URL from '../../../../config';
+import css from './CartModal.module.scss';
 
 function Item({ item, items, setItems }) {
   const context = useContext(UserContext);
