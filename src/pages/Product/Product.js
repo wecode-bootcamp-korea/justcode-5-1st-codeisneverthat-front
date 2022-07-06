@@ -27,7 +27,6 @@ function Product() {
 
   const [checkingSize, setCheckingSize] = useState(0);
 
-  const [modalOpen, setModalOpen] = useState(false);
   const [imageDetailModal, setImageDetailModal] = useState(false);
   const [sizeFitModal, setSizeFitModal] = useState(false);
   const [shippingModal, setShippingModal] = useState(false);
