@@ -20,8 +20,7 @@ import {
 library.add(faAngleLeft, faAngleRight, faArrowUpRightFromSquare);
 
 function Product() {
-  const context = useContext(UserContext);
-  const { token } = context;
+  const { token, setCartStatus } = useContext(UserContext);
 
   const [productDetails, setProductDetails] = useState({});
   const location = useLocation();
@@ -121,6 +120,7 @@ function Product() {
     })
       .then(res => res.json())
       .then(() => {});
+    setCartStatus(prev => !prev);
   };
 
   return (
