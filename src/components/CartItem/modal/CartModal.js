@@ -21,7 +21,6 @@ function Item({ item, items, setItems }) {
     });
     setItems(newItems);
     handleUpdate('minus');
-    setCartStatus(prev => !prev);
   };
 
   const plusOne = () => {
@@ -39,7 +38,6 @@ function Item({ item, items, setItems }) {
 
     handleUpdate('plus');
     setItems(newItems);
-    setCartStatus(prev => !prev);
   };
 
   const handleUpdate = cal => {
@@ -57,6 +55,7 @@ function Item({ item, items, setItems }) {
     })
       .then(res => res.json())
       .then(() => {});
+    setCartStatus(prev => !prev);
   };
 
   const handleDeleteClick = () => {
@@ -75,6 +74,7 @@ function Item({ item, items, setItems }) {
     })
       .then(res => res.json())
       .then(() => {});
+    setCartStatus(prev => !prev);
   };
 
   const handleMinusClick = () => {
