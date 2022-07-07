@@ -5,10 +5,10 @@ import css from './Product.module.scss';
 import SizeButton from '../../components/SizeButton/SizeButton';
 import { UserContext } from '../../store/UserStore';
 import BASE_URL from '../../config';
-// import ModalLayout from '../../modal';
-// import ImageDetail from '../../components/Product/modal/ImageDetail';
-// import SizeFit from '../../components/Product/modal/SizeFit';
-// import Shipping from '../../components/Product/modal/Shipping';
+import ModalLayout from '../../modal';
+import ImageDetail from './modal/ImageDetail';
+import SizeFit from './modal/SizeFit';
+import Shipping from './modal/Shipping';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -20,42 +20,28 @@ import {
 library.add(faAngleLeft, faAngleRight, faArrowUpRightFromSquare);
 
 function Product() {
-  const context = useContext(UserContext);
-  const { token } = context;
+  const { token, setCartStatus } = useContext(UserContext);
 
   const [productDetails, setProductDetails] = useState({});
   const location = useLocation();
 
   const [checkingSize, setCheckingSize] = useState(0);
 
-  // const [modalOpen, setModalOpen] = useState(false);
-  // const [imageDetailModal, setImageDetailModal] = useState(false);
-  // const [sizeFitModal, setSizeFitModal] = useState(false);
-  // const [shippingModal, setShippingModal] = useState(false);
+  const [imageDetailModal, setImageDetailModal] = useState(false);
+  const [sizeFitModal, setSizeFitModal] = useState(false);
+  const [shippingModal, setShippingModal] = useState(false);
 
-  // const openImageDetailModal = () => {
-  //   setImageDetailModal(true);
-  // };
+  const openImageDetailModal = () => {
+    setImageDetailModal(!imageDetailModal);
+  };
 
-  // const closeImageDetailModal = () => {
-  //   setImageDetailModal(false);
-  // };
+  const openSizeFitModal = () => {
+    setSizeFitModal(!sizeFitModal);
+  };
 
-  // const openSizeFitModal = () => {
-  //   setSizeFitModal(true);
-  // };
-
-  // const closeSizeFitModal = () => {
-  //   setSizeFitModal(false);
-  // };
-
-  // const openShippingModal = () => {
-  //   setShippingModal(true);
-  // };
-
-  // const closeShippingModal = () => {
-  //   setShippingModal(false);
-  // };
+  const openShippingModal = () => {
+    setShippingModal(!shippingModal);
+  };
 
   useEffect(() => {
     fetch(`${BASE_URL}/product${location.search}`, {
@@ -133,6 +119,7 @@ function Product() {
     })
       .then(res => res.json())
       .then(() => {});
+    setCartStatus(prev => !prev);
   };
 
   return (
@@ -164,6 +151,7 @@ function Product() {
             style={{
               transform: 'translate(-' + (sliderNum - 1) * 460 + 'px, 0px)',
             }}
+            onClick={openImageDetailModal}
           >
             {colorImageData.map(v => (
               <img
@@ -239,7 +227,7 @@ function Product() {
         </div>
         <div>
           <div className={css.modalContainer}>
-            <div className={css.modal} /*onClick={openModal}*/>
+            <div className={css.modal} onClick={openSizeFitModal}>
               <span className={css.modalButton}>SIZE & FIT</span>
               <span>
                 <FontAwesomeIcon
@@ -253,7 +241,7 @@ function Product() {
             </div>
           </div>
           <div className={css.modalContainer}>
-            <div className={css.modal} /*onClick={openModal}*/>
+            <div className={css.modal} onClick={openShippingModal}>
               <span className={css.modalButton}>SHIPPING</span>
               <span>
                 <FontAwesomeIcon
@@ -268,21 +256,24 @@ function Product() {
           </div>
         </div>
       </div>
-      {/* {imageDetailModal && (
-        <modalLayout openModal={openModal}>
-          <ImageDetail openModal={openModal} />
-        </modalLayout>
+      {imageDetailModal && (
+        <ModalLayout openModal={openImageDetailModal}>
+          <ImageDetail
+            openImageDetailModal={openImageDetailModal}
+            data={colorImageData}
+          />
+        </ModalLayout>
       )}
       {sizeFitModal && (
-        <ModalLayout openModal={openModal}>
-          <SizeFit openModal={openModal} />
+        <ModalLayout openModal={openSizeFitModal}>
+          <SizeFit openModal={openSizeFitModal} />
         </ModalLayout>
       )}
       {shippingModal && (
-        <ModalLayout openModal={openModal}>
-          <Shipping openModal={openModal} />
+        <ModalLayout openModal={openShippingModal}>
+          <Shipping openModal={openShippingModal} />
         </ModalLayout>
-      )} */}
+      )}
     </div>
   );
 }
