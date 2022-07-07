@@ -7,8 +7,7 @@ import { UserContext } from '../../store/UserStore';
 import BASE_URL from '../../config';
 
 function Cart() {
-  const context = useContext(UserContext);
-  const { token } = context;
+  const { token } = useContext(UserContext);
 
   const [items, setItems] = useState([]);
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useMemo } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
@@ -10,26 +10,27 @@ import BASE_URL from '../../config';
 import css from './Header.module.scss';
 
 function Header() {
-  const context = useContext(UserContext);
-  const { token, setToken } = context;
+  const { token, setToken, cartStatus } = useContext(UserContext);
 
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch(`${BASE_URL}/cart`, {
-      method: 'GET',
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then(res => res.json())
-      .then(items => {
-        const cartItems = items.map(item => ({
-          ...item,
-          cartquantity: item.quantity,
-        }));
-        setItems(cartItems);
-      });
-  }, [token, setItems]);
+    if (token !== '') {
+      fetch(`${BASE_URL}/cart`, {
+        method: 'GET',
+        headers: {
+          Authorization: token,
+        },
+      })
+        .then(res => res.json())
+        .then(items => {
+          const cartItems = items.map(item => ({
+            ...item,
+            cartquantity: item.quantity,
+          }));
+          setItems(cartItems);
+        });
+    }
+  }, [token, setItems, cartStatus]);
 
   const [subtotal, setSubtotal] = useState(0);
   useEffect(() => {
@@ -62,7 +63,7 @@ function Header() {
 
   useEffect(() => {
     const throttleScroll = () => {
-      throttle(() => {
+      return throttle(() => {
         const scrollingFalse = window.scrollY > window.scrollY + 10;
         if (scrollingFalse !== cartModal) setCartModal(scrollingFalse);
         if (scrollingFalse !== isShowing) setIsShowing(scrollingFalse);

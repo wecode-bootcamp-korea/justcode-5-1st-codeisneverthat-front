@@ -9,12 +9,16 @@ function UserStore(props) {
     return saved || '';
   });
 
+  const [cartStatus, setCartStatus] = useState(false);
+
   return (
     //value를 통해 전달하고 싶은 값을 넣어준다.
     <UserContext.Provider
       value={{
         token,
         setToken,
+        cartStatus,
+        setCartStatus,
       }}
     >
       {props.children}

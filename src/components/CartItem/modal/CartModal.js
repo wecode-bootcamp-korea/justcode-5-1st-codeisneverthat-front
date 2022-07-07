@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import BASE_URL from '../../../config';
 
 function Item({ item, items, setItems }) {
-  const context = useContext(UserContext);
-  const { token } = context;
+  const { token, setCartStatus } = useContext(UserContext);
 
   const minusOne = () => {
     const newItems = items.map(each => {
@@ -22,6 +21,7 @@ function Item({ item, items, setItems }) {
     });
     setItems(newItems);
     handleUpdate('minus');
+    setCartStatus(prev => !prev);
   };
 
   const plusOne = () => {
@@ -39,6 +39,7 @@ function Item({ item, items, setItems }) {
 
     handleUpdate('plus');
     setItems(newItems);
+    setCartStatus(prev => !prev);
   };
 
   const handleUpdate = cal => {
@@ -139,8 +140,7 @@ function Items({ items, setItems }) {
 }
 
 const CartModal = ({ openCartModal }) => {
-  const context = useContext(UserContext);
-  const { token } = context;
+  const { token, cartStatus, setCartStatus } = useContext(UserContext);
 
   const [items, setItems] = useState([]);
   useEffect(() => {
