@@ -42,22 +42,12 @@ function Footer() {
           </li>
           <li>
             <Link to="#" onClick={e => e.preventDefault()}>
-              contact
-            </Link>
-          </li>
-          <li>
-            <Link to="#" onClick={e => e.preventDefault()}>
               Shipping&Returns
             </Link>
           </li>
           <li>
             <Link to="#" onClick={e => e.preventDefault()}>
               PRIVACY POLICY
-            </Link>
-          </li>
-          <li>
-            <Link to="#" onClick={e => e.preventDefault()}>
-              TERMS&CONDITIONS
             </Link>
           </li>
           <li>

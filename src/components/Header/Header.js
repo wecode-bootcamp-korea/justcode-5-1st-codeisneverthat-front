@@ -6,6 +6,8 @@ import CartModal from './modal/CartModal/CartModal';
 import { UserContext } from '../../store/UserStore';
 import { throttle } from 'lodash';
 import BASE_URL from '../../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 import css from './Header.module.scss';
 
@@ -78,15 +80,12 @@ function Header() {
 
   return (
     <>
-      <header id={css['header']}>
+      <header
+        id={css['header']}
+        className={mobileToggleMenu ? null : `${css.menuOn}`}
+      >
         <div className={css.cont}>
-          <div
-            className={
-              mobileToggleMenu
-                ? `${css.header_left}`
-                : `${css.header_left} ${css.menuhandlenMenuToggleOn}`
-            }
-          >
+          <div className={css.header_left}>
             {/* <div className={css.header_left}> */}
             <button className={css.btn_menu} onClick={handlenMenuToggle}>
               <span className={css.menuWrap}>
@@ -109,15 +108,28 @@ function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link to="/collections?category=Tees">Tees</Link>
+                        <Link
+                          to="/collections?category=Tees"
+                          onClick={handlenMenuToggle}
+                        >
+                          Tees
+                        </Link>
                       </li>
                       <li>
-                        <Link to="/collections?category=Sweatshirts">
+                        <Link
+                          to="/collections?category=Sweatshirts"
+                          onClick={handlenMenuToggle}
+                        >
                           Sweatshirts
                         </Link>
                       </li>
                       <li>
-                        <Link to="/collections?category=Shirts">Shirts</Link>
+                        <Link
+                          to="/collections?category=Shirts"
+                          onClick={handlenMenuToggle}
+                        >
+                          Shirts
+                        </Link>
                       </li>
                       <li>
                         <Link to="#" onClick={e => e.preventDefault()}>
@@ -214,6 +226,22 @@ function Header() {
                   </button>
                 </li>
               </ul>
+              {token ? (
+                <button
+                  className={`${css.btn_link} ${css.mobile}`}
+                  onClick={handleLogoutToken}
+                >
+                  LOGOUT
+                </button>
+              ) : (
+                <Link
+                  className={`${css.btn_link} ${css.mobile}`}
+                  to="/Login"
+                  onClick={handlenMenuToggle}
+                >
+                  LOGIN
+                </Link>
+              )}
             </div>
           </div>
           <div className={css.logo}>
@@ -226,7 +254,7 @@ function Header() {
               <li>
                 <Link
                   to="#"
-                  className={css.btn_link}
+                  className={`${css.btn_link} ${css.pc}`}
                   onClick={e => e.preventDefault()}
                 >
                   KOR / ₩
@@ -234,19 +262,28 @@ function Header() {
               </li>
               <li>
                 {token ? (
-                  <button className={css.btn_link} onClick={handleLogoutToken}>
+                  <button
+                    className={`${css.btn_link} ${css.pc}`}
+                    onClick={handleLogoutToken}
+                  >
                     LOGOUT
                   </button>
                 ) : (
-                  <Link className={css.btn_link} to="/Login">
+                  <Link className={`${css.btn_link} ${css.pc}`} to="/Login">
                     LOGIN
                   </Link>
                 )}
               </li>
               <li>
                 <button className={css.btn_link} onClick={openCartModal}>
-                  CART
-                  <span>{subtotal}</span>
+                  <span className={css.pc}>CART</span>
+                  <span className={css.quantity}>
+                    <FontAwesomeIcon
+                      icon={faCartShopping}
+                      className={css.mobile}
+                    />
+                    {subtotal}
+                  </span>
                 </button>
               </li>
             </ul>

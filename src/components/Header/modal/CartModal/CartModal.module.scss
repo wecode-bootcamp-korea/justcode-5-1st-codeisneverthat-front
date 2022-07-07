@@ -89,3 +89,27 @@
     font-size: 1.2rem;
   }
 }
+
+@media screen and (max-width: 960px) {
+  .container {
+    top: 6rem;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 8rem);
+    padding: 0 4%;
+
+    &>div {
+      height: 100%;
+    }
+
+    .main_container {
+      width: 100%;
+      height: 100%;
+      padding: 3rem;
+
+      .cart_content_container {
+        height: calc(100% - 25rem);
+      }
+    }
+  }
+}
