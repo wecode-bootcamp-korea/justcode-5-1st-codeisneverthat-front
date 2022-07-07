@@ -1,11 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { UserContext } from '../../store/UserStore';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../../../store/UserStore';
 import Items from './Items';
-import BASE_URL from '../../config';
-import css from './Cart.module.scss';
+import BASE_URL from '../../../../config';
+import css from './CartModal.module.scss';
 
-function Cart() {
+const CartModal = ({ openCartModal }) => {
   const context = useContext(UserContext);
   const { token } = context;
 
@@ -41,12 +40,13 @@ function Cart() {
         <div className={css.main_container}>
           <div className={css.cart_order}>
             <span> ORDER SUMMARY </span>
-            <Link to="/" className={css.cart_back}>
-              BACK
-            </Link>
+            <button onClick={openCartModal} className={css.cart_back}>
+              CLOSE
+            </button>
           </div>
-          <Items items={items} setItems={setItems} />
-
+          <div className={css.cart_content_container}>
+            <Items items={items} setItems={setItems} />
+          </div>
           <div className={css.cart_bottom}>
             <div className={css.cart_save_box}>
               <div className={css.cart_subtotal}>
@@ -71,6 +71,6 @@ function Cart() {
       </div>
     </div>
   );
-}
+};
 
-export default Cart;
+export default CartModal;
