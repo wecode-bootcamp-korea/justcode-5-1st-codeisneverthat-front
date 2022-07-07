@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import css from './Product.module.scss';
 import SizeButton from '../../components/SizeButton/SizeButton';
 import { UserContext } from '../../store/UserStore';
@@ -56,6 +56,10 @@ function Product() {
       });
   }, [location]);
 
+  const params = new URLSearchParams(`${location.search}`);
+
+  const productColorId = params.get('product_color?id');
+
   const handleChange = e => {
     setCheckingSize(e.target.dataset.id);
   };
@@ -66,26 +70,26 @@ function Product() {
   let colorData = new Object();
 
   if (productDetails.data) {
-    const productId = productDetails.data.productId;
-
     const { colorImage, stockBySize } = productDetails.data;
 
     const accessImageData = () => {
-      const colorImageById = colorImage.filter(v => v.id === productId)[0];
+      const colorImageById = colorImage.filter(v => v.id == productColorId)[0];
       return colorImageById.images;
     };
 
     colorImageData = accessImageData();
 
     const accessStockData = () => {
-      const stockBySizeById = stockBySize.filter(v => v.id === productId)[0];
+      const stockBySizeById = stockBySize.filter(
+        v => v.id == productColorId
+      )[0];
       return stockBySizeById.size_stock;
     };
 
     stockBySizeData = accessStockData();
 
     const accessColorData = () => {
-      const colorById = colorImage.filter(v => v.id === productId)[0];
+      const colorById = colorImage.filter(v => v.id == productColorId)[0];
       return colorById.color;
     };
     colorData = accessColorData();
@@ -189,14 +193,14 @@ function Product() {
           {backData?.colorImage &&
             backData.colorImage.map(v => {
               return (
-                <div className={css.productColorImage} key={v.id}>
+                <Link to="#" className={css.productColorImage} key={v.id}>
                   <div className={css.colorImageDetailBox}>
                     <div className={css.colorImageDetail} key={v.id}>
                       {v.color.color}
                     </div>
                   </div>
                   <img alt={v.color.color} src={v.images[0].url} />
-                </div>
+                </Link>
               );
             })}
         </div>
@@ -266,12 +270,12 @@ function Product() {
       )}
       {sizeFitModal && (
         <ModalLayout openModal={openSizeFitModal}>
-          <SizeFit openModal={openSizeFitModal} />
+          <SizeFit openSizeFitModal={openSizeFitModal} />
         </ModalLayout>
       )}
       {shippingModal && (
         <ModalLayout openModal={openShippingModal}>
-          <Shipping openModal={openShippingModal} />
+          <Shipping openShippingModal={openShippingModal} />
         </ModalLayout>
       )}
     </div>
