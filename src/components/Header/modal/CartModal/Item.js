@@ -41,15 +41,13 @@ function Item({ item, items, setItems }) {
   };
 
   const handleUpdate = cal => {
-    console.log(cartStatus);
-    fetch(`${BASE_URL}/cart`, {
+    fetch(`${BASE_URL}/cart/${item.id}`, {
       method: 'PUT',
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        product_details_id: item.product_details_id,
         quantity: item.quantity,
         cal: cal,
       }),
@@ -63,15 +61,11 @@ function Item({ item, items, setItems }) {
     const newItems = items.filter(each => each.id !== item.id);
     setItems(newItems);
 
-    fetch(`${BASE_URL}/cart`, {
+    fetch(`${BASE_URL}/cart/${item.id}`, {
       method: 'DELETE',
       headers: {
         Authorization: token,
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        product_details_id: item.product_details_id,
-      }),
     })
       .then(res => res.json())
       .then(() => {});

@@ -10,7 +10,7 @@ function Block(props) {
 
   const link = '/product?id='
     .concat(id)
-    .concat('/product_color?id=')
+    .concat('&product_color?id=')
     .concat(mainColor);
   useEffect(() => {
     setMainImage(props.image);
