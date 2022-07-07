@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import BASE_URL from '../../../../config';
 import css from './Item.module.scss';
 
-const Item = ({ item, items, setItems }) => {
-  const { token, setCartStatus } = useContext(UserContext);
+function Item({ item, items, setItems }) {
+  const { token, cartStatus, setCartStatus } = useContext(UserContext);
 
   const minusOne = () => {
     const newItems = items.map(each => {
@@ -41,6 +41,7 @@ const Item = ({ item, items, setItems }) => {
   };
 
   const handleUpdate = cal => {
+    console.log(cartStatus);
     fetch(`${BASE_URL}/cart`, {
       method: 'PUT',
       headers: {
@@ -127,6 +128,6 @@ const Item = ({ item, items, setItems }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Item;

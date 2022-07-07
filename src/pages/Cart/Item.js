@@ -5,8 +5,7 @@ import BASE_URL from '../../config';
 import css from '../../pages/Cart/Item.module.scss';
 
 function Item({ item, items, setItems }) {
-  const context = useContext(UserContext);
-  const { token } = context;
+  const { token, setCartStatus } = useContext(UserContext);
 
   const minusOne = () => {
     const newItems = items.map(each => {
@@ -56,6 +55,7 @@ function Item({ item, items, setItems }) {
     })
       .then(res => res.json())
       .then(() => {});
+    setCartStatus(prev => !prev);
   };
 
   const handleDeleteClick = () => {
@@ -74,6 +74,7 @@ function Item({ item, items, setItems }) {
     })
       .then(res => res.json())
       .then(() => {});
+    setCartStatus(prev => !prev);
   };
 
   const handleMinusClick = () => {
