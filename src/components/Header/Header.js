@@ -132,72 +132,72 @@ function Header() {
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           HDP Series
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Tops
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Bottoms
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Shorts
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Headwear
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Bags
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Shoes
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Socks & Underwear
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Accessories
                         </Link>
                       </li>
                       <li>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Collaboration
                         </Link>
                       </li>
                       <li className={css.menu_archieves}>
-                        <Link to="#" onClick={e => e.preventDefault()}>
+                        <Link to="#" onClick={handlenMenuToggle}>
                           Archieves &nbsp;&gt;
                         </Link>
                         <ul>
                           <li>
-                            <Link to="#" onClick={e => e.preventDefault()}>
+                            <Link to="#" onClick={handlenMenuToggle}>
                               Tops
                             </Link>
                           </li>
                           <li>
-                            <Link to="#" onClick={e => e.preventDefault()}>
+                            <Link to="#" onClick={handlenMenuToggle}>
                               Bottoms
                             </Link>
                           </li>
                           <li>
-                            <Link to="#" onClick={e => e.preventDefault()}>
+                            <Link to="#" onClick={handlenMenuToggle}>
                               Accessories
                             </Link>
                           </li>
@@ -207,7 +207,11 @@ function Header() {
                   </div>
                 </li>
                 <li className={css.left_menu_li}>
-                  <Link className={css.btn_link} to="/top">
+                  <Link
+                    className={css.btn_link}
+                    to="/top"
+                    onClick={handlenMenuToggle}
+                  >
                     TOP20
                   </Link>
                 </li>
@@ -215,7 +219,7 @@ function Header() {
                   <Link
                     className={css.btn_link}
                     to="#"
-                    onClick={e => e.preventDefault()}
+                    onClick={handlenMenuToggle}
                   >
                     FEATURES
                   </Link>
@@ -245,7 +249,7 @@ function Header() {
             </div>
           </div>
           <div className={css.logo}>
-            <Link to="/">
+            <Link to="/" onClick={handlenMenuToggle}>
               <img src="images/logo.svg" alt="codeisneverthat logo" />
             </Link>
           </div>
@@ -269,7 +273,11 @@ function Header() {
                     LOGOUT
                   </button>
                 ) : (
-                  <Link className={`${css.btn_link} ${css.pc}`} to="/Login">
+                  <Link
+                    className={`${css.btn_link} ${css.pc}`}
+                    to="/Login"
+                    onClick={handleLogoutToken}
+                  >
                     LOGIN
                   </Link>
                 )}
