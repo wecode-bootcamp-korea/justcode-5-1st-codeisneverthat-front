@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../../../../store/UserStore';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../store/UserStore';
-import BASE_URL from '../../config';
-import css from '../../pages/Cart/Item.module.scss';
+import BASE_URL from '../../../../config';
+import css from './Item.module.scss';
 
-function Item({ item, items, setItems }) {
+const Item = ({ item, items, setItems }) => {
   const context = useContext(UserContext);
   const { token } = context;
 
@@ -91,16 +91,15 @@ function Item({ item, items, setItems }) {
         <img alt="productImage" src={item.url} />
       </div>
       <div className={css.cart_content}>
-        <div className={css.cart_upper}>
-          <div className={css.cart_name_cancel}>
-            <div className={css.product_name}>
-              <Link to="/">{item.name}</Link>
-            </div>
-            <button onClick={handleDeleteClick}>x</button>
+        <div className={css.cart_name_cancel}>
+          <div className={css.product_name}>
+            <Link to="/">{item.name}</Link>
           </div>
-          <div className={css.product_color}>{item.color}</div>
-          <div className={css.product_size}>{item.size}</div>
+          <button onClick={handleDeleteClick}>x</button>
         </div>
+        <div className={css.product_color}>{item.color}</div>
+        <div className={css.product_size}>{item.size}</div>
+
         <div className={css.cart_sub_btn}>
           <div className={css.cart_quantity_btn}>
             <button
@@ -127,6 +126,6 @@ function Item({ item, items, setItems }) {
       </div>
     </div>
   );
-}
+};
 
 export default Item;
