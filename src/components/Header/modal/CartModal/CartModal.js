@@ -4,9 +4,8 @@ import Items from './Items';
 import BASE_URL from '../../../../config';
 import css from './CartModal.module.scss';
 
-const CartModal = ({ openCartModal }) => {
-  const context = useContext(UserContext);
-  const { token } = context;
+function CartModal({ openCartModal }) {
+  const { token } = useContext(UserContext);
 
   const [items, setItems] = useState([]);
   useEffect(() => {
@@ -71,6 +70,6 @@ const CartModal = ({ openCartModal }) => {
       </div>
     </div>
   );
-};
+}
 
 export default CartModal;

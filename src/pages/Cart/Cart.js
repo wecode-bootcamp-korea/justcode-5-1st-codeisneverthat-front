@@ -6,8 +6,7 @@ import BASE_URL from '../../config';
 import css from './Cart.module.scss';
 
 function Cart() {
-  const context = useContext(UserContext);
-  const { token } = context;
+  const { token } = useContext(UserContext);
 
   const [items, setItems] = useState([]);
   useEffect(() => {

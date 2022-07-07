@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useMemo } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ModalLayout from '../../modal';
 import Search from './modal/Search';
@@ -10,26 +10,27 @@ import BASE_URL from '../../config';
 import css from './Header.module.scss';
 
 function Header() {
-  const context = useContext(UserContext);
-  const { token, setToken } = context;
+  const { token, setToken, cartStatus } = useContext(UserContext);
 
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch(`${BASE_URL}/cart`, {
-      method: 'GET',
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then(res => res.json())
-      .then(items => {
-        const cartItems = items.map(item => ({
-          ...item,
-          cartquantity: item.quantity,
-        }));
-        setItems(cartItems);
-      });
-  }, [token, setItems]);
+    if (token !== '') {
+      fetch(`${BASE_URL}/cart`, {
+        method: 'GET',
+        headers: {
+          Authorization: token,
+        },
+      })
+        .then(res => res.json())
+        .then(items => {
+          const cartItems = items.map(item => ({
+            ...item,
+            cartquantity: item.quantity,
+          }));
+          setItems(cartItems);
+        });
+    }
+  }, [token, setItems, cartStatus]);
 
   const [subtotal, setSubtotal] = useState(0);
   useEffect(() => {
@@ -55,26 +56,25 @@ function Header() {
     alert('로그아웃 되었습니다.');
   };
 
-  const [navbarOpen, setNavbarOpen] = useState(true);
+  const [mobileToggleMenu, setMobileToggleMenu] = useState(true);
   const handlenMenuToggle = () => {
-    setNavbarOpen(prev => !prev);
+    setMobileToggleMenu(prev => !prev);
   };
 
-  const throttledScroll = useMemo(
-    () =>
-      throttle(() => {
-        const nextTabnavOn = window.scrollY > window.scrollY + 100;
-        if (nextTabnavOn !== cartModal) setCartModal(nextTabnavOn);
-        if (nextTabnavOn !== isShowing) setIsShowing(nextTabnavOn);
-      }, 300),
-    [cartModal, isShowing]
-  );
   useEffect(() => {
-    window.addEventListener('scroll', throttledScroll);
-    return () => {
-      window.removeEventListener('scroll', throttledScroll); //clean up
+    const throttleScroll = () => {
+      return throttle(() => {
+        const scrollingFalse = window.scrollY > window.scrollY + 10;
+        if (scrollingFalse !== cartModal) setCartModal(scrollingFalse);
+        if (scrollingFalse !== isShowing) setIsShowing(scrollingFalse);
+      }, 300);
     };
-  }, [throttledScroll]);
+
+    window.addEventListener('scroll', throttleScroll());
+    return () => {
+      window.removeEventListener('scroll', throttleScroll()); //clean up
+    };
+  }, [cartModal, isShowing]);
 
   return (
     <>
@@ -82,9 +82,9 @@ function Header() {
         <div className={css.cont}>
           <div
             className={
-              navbarOpen
+              mobileToggleMenu
                 ? `${css.header_left}`
-                : `${css.header_left} ${css.menuOn}`
+                : `${css.header_left} ${css.menuhandlenMenuToggleOn}`
             }
           >
             {/* <div className={css.header_left}> */}
@@ -104,7 +104,9 @@ function Header() {
                   <div className={css.shop_menu}>
                     <ul>
                       <li>
-                        <Link to="/collections">All</Link>
+                        <Link to="/collections" onClick={handlenMenuToggle}>
+                          All
+                        </Link>
                       </li>
                       <li>
                         <Link to="/collections?category=Tees">Tees</Link>

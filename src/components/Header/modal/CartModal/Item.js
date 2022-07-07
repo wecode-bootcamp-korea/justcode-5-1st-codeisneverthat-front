@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import BASE_URL from '../../../../config';
 import css from './Item.module.scss';
 
-const Item = ({ item, items, setItems }) => {
-  const context = useContext(UserContext);
-  const { token } = context;
+function Item({ item, items, setItems }) {
+  const { token, cartStatus, setCartStatus } = useContext(UserContext);
 
   const minusOne = () => {
     const newItems = items.map(each => {
@@ -42,38 +41,35 @@ const Item = ({ item, items, setItems }) => {
   };
 
   const handleUpdate = cal => {
-    fetch(`${BASE_URL}/cart`, {
+    fetch(`${BASE_URL}/cart/${item.id}`, {
       method: 'PUT',
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        product_details_id: item.product_details_id,
         quantity: item.quantity,
         cal: cal,
       }),
     })
       .then(res => res.json())
       .then(() => {});
+    setCartStatus(prev => !prev);
   };
 
   const handleDeleteClick = () => {
     const newItems = items.filter(each => each.id !== item.id);
     setItems(newItems);
 
-    fetch(`${BASE_URL}/cart`, {
+    fetch(`${BASE_URL}/cart/${item.id}`, {
       method: 'DELETE',
       headers: {
         Authorization: token,
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        product_details_id: item.product_details_id,
-      }),
     })
       .then(res => res.json())
       .then(() => {});
+    setCartStatus(prev => !prev);
   };
 
   const handleMinusClick = () => {
@@ -126,6 +122,6 @@ const Item = ({ item, items, setItems }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Item;
