@@ -67,6 +67,16 @@
   font-size: 2rem;
 }
 
+.price2{
+  display:none; 
+}
+.stock {
+  padding-top: 0.8rem;
+  text-align: center;
+  font-size: 2rem;
+  color: lightgray;
+}
+
 @media (max-width: 1140px) {
   .block {
     width: 48%;
@@ -88,4 +98,14 @@
   .price {
     padding-top: 2rem;
   }
+  .price2{
+    display:none; 
+  }
+  .stock {
+    padding-top: 0.8rem;
+    text-align: center;
+    font-size: 2rem;
+    color: lightgray;
+  }
+  
 }

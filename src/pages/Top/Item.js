@@ -10,8 +10,11 @@ import { Link } from 'react-router-dom';
 
 function Item(props) {
   const id = props.id;
-  const link = '/product?id='.concat(id);
-  // console.log(id);
+  const mainColor = props.colorId[0].id;
+  const link = '/product?id='
+    .concat(id)
+    .concat('&product_color?id=')
+    .concat(mainColor);
 
   return (
     <Link to={link} className={css.forHover}>
