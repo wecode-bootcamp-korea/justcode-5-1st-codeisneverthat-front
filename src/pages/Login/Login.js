@@ -50,7 +50,6 @@ function Login() {
         } else {
           localStorage.setItem('token', '');
         }
-        // console.log(localStorage);
       });
 
     // t@t.kr

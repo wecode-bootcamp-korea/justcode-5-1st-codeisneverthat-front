@@ -50,8 +50,12 @@ function Product() {
       .then(res => res.json())
       .then(data => {
         setProductDetails(data);
+        let productChangeId = data.data.stockBySize.findIndex(
+          v => v.id == productColorId
+        );
         setCheckingSize(
-          data.data.stockBySize[0].size_stock[0].product_details_id
+          data.data.stockBySize[productChangeId].size_stock[0]
+            .product_details_id
         );
       });
   }, [location]);
