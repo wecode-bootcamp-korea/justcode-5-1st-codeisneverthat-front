@@ -69,7 +69,7 @@ function Block(props) {
       </div>
       <Link to={link} className={css.forSize}>
         <div className={css.name}>{props.name}</div>
-        <div className={priceStyle}>₩ {props.price}</div>
+        <div className={priceStyle}>₩ {props.price.toLocaleString()}</div>
         <div className={soldOutStyle}> SOLD OUT</div>
       </Link>
     </div>
