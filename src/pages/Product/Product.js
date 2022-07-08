@@ -58,6 +58,8 @@ function Product() {
 
   const params = new URLSearchParams(`${location.search}`);
 
+  const productId = params.get('id');
+
   const productColorId = params.get('product_color?id');
 
   const handleChange = e => {
@@ -193,7 +195,11 @@ function Product() {
           {backData?.colorImage &&
             backData.colorImage.map(v => {
               return (
-                <Link to="#" className={css.productColorImage} key={v.id}>
+                <Link
+                  to={`/product?id=${productId}&product_color?id=${v.id}`}
+                  className={css.productColorImage}
+                  key={v.id}
+                >
                   <div className={css.colorImageDetailBox}>
                     <div className={css.colorImageDetail} key={v.id}>
                       {v.color.color}
