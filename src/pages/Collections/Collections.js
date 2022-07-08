@@ -4,6 +4,7 @@ import BASE_URL from '../../config';
 
 import css from './Collections.module.scss';
 import Block from './Block';
+import SortModal from './SortModal';
 
 function Collections() {
   function goTop() {
@@ -15,10 +16,22 @@ function Collections() {
   }
 
   const [items, setItems] = useState([]);
+  const [category, setCategory] = useState('All');
+  const [sortModal, setSortModal] = useState(false);
+  const [viewModal, setViewModal] = useState(false);
+
+  function categorySetter() {
+    if (location.search === '') {
+      setCategory('All');
+    } else {
+      setCategory(location.search.split('=').pop());
+    }
+  }
 
   const location = useLocation();
-  useEffect(() => {}, [location]);
-  // console.log(location.search);
+  useEffect(() => {
+    categorySetter();
+  }, [location]);
 
   useEffect(() => {
     fetch(`${BASE_URL}/collections${location.search}`, {
@@ -32,9 +45,42 @@ function Collections() {
 
   return (
     <div className={css.container}>
-      <div className={css.categoryButton}>
-        <button>{location.search.split('=').pop()}</button>
-      </div>
+      <button
+        className={css.button}
+        // onClick={() => ('/collections${location.search}')}
+        style={{
+          background: '#0e0',
+          fontSize: '1.6rem',
+          padding: '7px 14px',
+          margin: 0,
+        }}
+      >
+        {category}
+      </button>
+      <button
+        className={css.sort}
+        style={{
+          background: 'lightgrey',
+          fontSize: '1.6rem',
+          padding: '7px 14px',
+          margin: 0,
+        }}
+      >
+        Sort
+      </button>
+
+      <button
+        className={css.view}
+        style={{
+          background: 'lightgrey',
+          fontSize: '1.6rem',
+          padding: '7px 14px',
+          margin: 0,
+        }}
+      >
+        View
+      </button>
+
       <div className={css.container_cont}>
         {items.map(item => (
           <Block
@@ -46,6 +92,7 @@ function Collections() {
             price={item.price}
             type={item.categoryId}
             image={item.colorImage[0].images[0].url}
+            subimages2={item.colorImage[1].images[0].url}
           />
         ))}
       </div>

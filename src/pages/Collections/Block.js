@@ -9,24 +9,7 @@ function Block(props) {
   const [mainColor, setMainColor] = useState('');
   const [priceStyle, setPriceStyle] = useState(css.price);
   const [soldOutStyle, setSoldOutStyle] = useState(css.price2);
-
-  let zeroCounter = 0;
-  let totalProducts = 0;
   const stockArray = props.stock;
-
-  for (var i = 0; i < stockArray.length; i++) {
-    for (var j = 0; j < stockArray[i].size_stock.length; j++) {
-      if (stockArray[i].size_stock[j].stock === 0) {
-        zeroCounter++;
-      }
-      totalProducts++;
-    }
-  }
-
-  if (totalProducts === zeroCounter) {
-    setPriceStyle(css.price2);
-    setSoldOutStyle(css.price);
-  }
 
   const link = '/product?id='
     .concat(id)
@@ -36,6 +19,25 @@ function Block(props) {
     setMainImage(props.image);
     setMainColor(props.colorId[0].id);
   }, [props.image]);
+
+  function soldOutSetter(arrayParam) {
+    let sum = 0;
+    for (var i = 0; i < arrayParam.length; i++) {
+      for (var j = 0; j < arrayParam[i].size_stock.length; j++) {
+        sum += arrayParam[i].size_stock[j].stock;
+      }
+    }
+    if (sum === 0) {
+      setPriceStyle(css.price2);
+      setSoldOutStyle(css.stock);
+    }
+  }
+
+  useEffect(() => {
+    soldOutSetter(stockArray);
+  }, []);
+
+  // console.log('sum:', sum);
 
   return (
     <div className={css.block}>
@@ -69,6 +71,7 @@ function Block(props) {
       </div>
       <Link to={link} className={css.forSize}>
         <div className={css.name}>{props.name}</div>
+        {/* {sum == 0 ? <div></div> :  } */}
         <div className={priceStyle}>₩ {props.price}</div>
         <div className={soldOutStyle}> SOLD OUT</div>
       </Link>
