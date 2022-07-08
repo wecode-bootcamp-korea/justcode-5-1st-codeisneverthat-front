@@ -15,10 +15,22 @@ function Collections() {
   }
 
   const [items, setItems] = useState([]);
+  const [category, setCategory] = useState('All');
+  const [sortModal, setSortModal] = useState(false);
+  const [viewModal, setViewModal] = useState(false);
+
+  function categorySetter() {
+    if (location.search === '') {
+      setCategory('All');
+    } else {
+      setCategory(location.search.split('=').pop());
+    }
+  }
 
   const location = useLocation();
-  useEffect(() => {}, [location]);
-  // console.log(location.search);
+  useEffect(() => {
+    categorySetter();
+  }, [location]);
 
   useEffect(() => {
     fetch(`${BASE_URL}/collections${location.search}`, {
@@ -32,9 +44,46 @@ function Collections() {
 
   return (
     <div className={css.container}>
+      <button
+        className={css.button}
+        style={{
+          background: '#0e0',
+          fontSize: '1.6rem',
+          padding: '7px 14px',
+          position: 'relative',
+          left: '3%',
+        }}
+      >
+        {category}
+      </button>
+      <button
+        className={css.sort}
+        style={{
+          background: 'lightgrey',
+          fontSize: '1.6rem',
+          padding: '7px 14px',
+          margin: 0,
+        }}
+      >
+        Sort
+      </button>
+
+      <button
+        className={css.view}
+        style={{
+          background: 'lightgrey',
+          fontSize: '1.6rem',
+          padding: '7px 14px',
+          margin: 0,
+        }}
+      >
+        View
+      </button>
+
       <div className={css.container_cont}>
         {items.map(item => (
           <Block
+            stock={item.stockBySize}
             key={item.productId}
             id={item.productId}
             colorId={item.colorImage}

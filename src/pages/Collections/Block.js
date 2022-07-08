@@ -7,6 +7,9 @@ function Block(props) {
 
   const [mainImage, setMainImage] = useState('');
   const [mainColor, setMainColor] = useState('');
+  const [priceStyle, setPriceStyle] = useState(css.price);
+  const [soldOutStyle, setSoldOutStyle] = useState(css.price2);
+  const stockArray = props.stock;
 
   const link = '/product?id='
     .concat(id)
@@ -16,6 +19,23 @@ function Block(props) {
     setMainImage(props.image);
     setMainColor(props.colorId[0].id);
   }, [props.image]);
+
+  function soldOutSetter(arrayParam) {
+    let sum = 0;
+    for (var i = 0; i < arrayParam.length; i++) {
+      for (var j = 0; j < arrayParam[i].size_stock.length; j++) {
+        sum += arrayParam[i].size_stock[j].stock;
+      }
+    }
+    if (sum === 0) {
+      setPriceStyle(css.price2);
+      setSoldOutStyle(css.stock);
+    }
+  }
+
+  useEffect(() => {
+    soldOutSetter(stockArray);
+  }, []);
 
   return (
     <div className={css.block}>
@@ -49,7 +69,8 @@ function Block(props) {
       </div>
       <Link to={link} className={css.forSize}>
         <div className={css.name}>{props.name}</div>
-        <div className={css.price}>₩ {props.price}</div>
+        <div className={priceStyle}>₩ {props.price}</div>
+        <div className={soldOutStyle}> SOLD OUT</div>
       </Link>
     </div>
   );
