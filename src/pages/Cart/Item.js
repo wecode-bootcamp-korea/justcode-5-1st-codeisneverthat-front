@@ -41,7 +41,7 @@ function Item({ item, items, setItems }) {
   };
 
   const handleUpdate = cal => {
-    fetch(`${BASE_URL}/cart`, {
+    fetch(`${BASE_URL}/cart/${item.id}`, {
       method: 'PUT',
       headers: {
         Authorization: token,
@@ -62,7 +62,7 @@ function Item({ item, items, setItems }) {
     const newItems = items.filter(each => each.id !== item.id);
     setItems(newItems);
 
-    fetch(`${BASE_URL}/cart`, {
+    fetch(`${BASE_URL}/cart/${item.id}`, {
       method: 'DELETE',
       headers: {
         Authorization: token,
